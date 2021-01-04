@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>1e45bb76-6368-460e-97f8-b748dabaf9b9</Id>
+  <DisplayName>Tony Process</DisplayName>
+  <CreatedTime>2021-01-04T18:46:37.4119623Z</CreatedTime>
+  <ModifiedTime>2021-01-04T18:46:37.4119623Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>ef377bc5-6a42-45fe-bc55-10f116d11d48</Id>
+    <DisplayName />
+    <Children />
+  </FirstActivity>
+  <ProcessId>dab67a27-6777-461f-bdee-3f063d5e603e</ProcessId>
+</WorkflowConfiguration>
