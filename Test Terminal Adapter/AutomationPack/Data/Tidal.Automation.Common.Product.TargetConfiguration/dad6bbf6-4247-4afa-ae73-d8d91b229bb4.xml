@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<TargetConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="UnixTargetConfiguration" xml:space="preserve">
+  <Id>dad6bbf6-4247-4afa-ae73-d8d91b229bb4</Id>
+  <DisplayName>Unix/Linux System</DisplayName>
+  <CreatedTime>2020-12-21T20:45:53.0711428Z</CreatedTime>
+  <ModifiedTime>2020-12-21T20:45:53.0711428Z</ModifiedTime>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-1708537768-1303643608-725345543-577145</SecurityIdentifier>
+  </Owner>
+  <DefaultRuntimeUserId>acabcd24-e6cf-4d09-88b9-3860bd54d7b5</DefaultRuntimeUserId>
+  <TypeExtensionId>5598e74f-68e3-ec60-82a4-7d91b7824389</TypeExtensionId>
+  <OsName />
+  <OsVersion />
+  <NodeName />
+  <EnableCodeInjectionPrevention>true</EnableCodeInjectionPrevention>
+  <SshHost>sjc-cent59-rac2.tidalsoft.local</SshHost>
+  <SshPort>22</SshPort>
+  <Protocol>SSH</Protocol>
+  <SftpEnabled>false</SftpEnabled>
+  <ScpEnabled>false</ScpEnabled>
+  <UseHostBasedAuthentication>false</UseHostBasedAuthentication>
+  <UseDefaultHostKey>true</UseDefaultHostKey>
+  <PromptPrefix />
+  <DeviceType>UNIX</DeviceType>
+  <SessionResourceId>5377b641-5898-4203-887e-39d71cf0beac</SessionResourceId>
+  <SessionResource xml:space="preserve">
+    <Id>5377b641-5898-4203-887e-39d71cf0beac</Id>
+    <DisplayName>Unix/Linux System Session Resource</DisplayName>
+  </SessionResource>
+  <SessionConstraint xml:space="preserve">
+    <Id>9cbfe1e0-8f00-4f42-83bd-c4789463c659</Id>
+    <DisplayName>Unix/Linux System Session Resource Constraint</DisplayName>
+    <ResourceId>5377b641-5898-4203-887e-39d71cf0beac</ResourceId>
+    <Scope>
+      <Family>Target</Family>
+      <ControllingItemId>dad6bbf6-4247-4afa-ae73-d8d91b229bb4</ControllingItemId>
+    </Scope>
+    <Quantity>3</Quantity>
+  </SessionConstraint>
+  <MaxIdleTimePeriod>
+    <DisplayUnits>Minutes</DisplayUnits>
+    <Period>
+      <HardcodedValue>5</HardcodedValue>
+    </Period>
+  </MaxIdleTimePeriod>
+  <ConnectionTimeOut>108</ConnectionTimeOut>
+  <LoginExpectList />
+  <ElevatingPrivilegeExpectList />
+  <DeviceTypeConfigurationId>4ba4d91b-91f8-409c-bf09-2b84f19575fe</DeviceTypeConfigurationId>
+  <PromptExpectPattern>
+    <FormattedCode>^{0}.*\$</FormattedCode>
+    <References>
+      <VariableReference xsi:type="PropertyReference">
+        <DisplayPath>Target.Prompt Prefix</DisplayPath>
+        <LinkChain>
+          <Link xsi:type="PropertyNameLink">
+            <PropertyName>PromptPrefix</PropertyName>
+          </Link>
+        </LinkChain>
+        <ObjectType>Target</ObjectType>
+      </VariableReference>
+    </References>
+  </PromptExpectPattern>
+  <ErrorExpectPattern>
+    <HardcodedValue />
+  </ErrorExpectPattern>
+  <AdminPromptExpectPattern>
+    <FormattedCode>^{0}.*#</FormattedCode>
+    <References>
+      <VariableReference xsi:type="PropertyReference">
+        <DisplayPath>Target.Prompt Prefix</DisplayPath>
+        <LinkChain>
+          <Link xsi:type="PropertyNameLink">
+            <PropertyName>PromptPrefix</PropertyName>
+          </Link>
+        </LinkChain>
+        <ObjectType>Target</ObjectType>
+      </VariableReference>
+    </References>
+  </AdminPromptExpectPattern>
+</TargetConfiguration>
