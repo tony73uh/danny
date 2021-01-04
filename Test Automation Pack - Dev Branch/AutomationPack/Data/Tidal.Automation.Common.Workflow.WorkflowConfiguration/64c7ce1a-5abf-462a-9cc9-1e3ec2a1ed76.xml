@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>64c7ce1a-5abf-462a-9cc9-1e3ec2a1ed76</Id>
+  <DisplayName>Test While Process</DisplayName>
+  <CreatedTime>2020-12-22T19:50:33.3954777Z</CreatedTime>
+  <ModifiedTime>2020-12-22T19:50:33.3954777Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>50612d34-e6a7-4766-8cb9-13ad79e214ce</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="WhileNode">
+        <Id>77ffa922-b200-4970-ac5d-2c3b019875ac</Id>
+        <DisplayName>While Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>6ed44cb9-deea-4963-8c0e-a63b52be8fd0</Id>
+            <DisplayName>Set Variable</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>62674b4e-1413-4c82-8929-a81bf3b9cca7</Id>
+                <ActivityNodeId>6ed44cb9-deea-4963-8c0e-a63b52be8fd0</ActivityNodeId>
+                <CompletedId>847274a4-e37e-4cdf-a6bf-6cbab51b4c55</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+              <Id>6ed44cb9-deea-4963-8c0e-a63b52be8fd0</Id>
+              <DisplayName>Set Variable</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>4627c974-b2dc-47cd-b15d-8e4ddbcc40d0</ContainingProcessId>
+              <VariableToSet>
+                <DisplayPath>Process.Variables.Local.Loop Index</DisplayPath>
+                <LinkChain />
+                <ObjectId>88766267-3c64-4c81-b1c4-2da4942cc2b4</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableToSet>
+              <NewValue xsi:type="SubstitutableNumber">
+                <FormattedCode>{0} + 1</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Local.Loop Index</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>88766267-3c64-4c81-b1c4-2da4942cc2b4</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </NewValue>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>836eb02d-3ced-447b-8a41-6f5395659cc7</Id>
+          <Operator>Or</Operator>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>260c54c7-58c1-464c-ad68-c3dd19a577e3</Id>
+              <Expression xsi:type="SubstitutableNumber">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Variables.Input.Loop Count</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>0d62d1b9-e63c-445f-aeaf-fe6519e20e6f</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </VariableReference>
+                </References>
+              </Expression>
+              <Comparison>LessThan</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Local.Loop Index</DisplayPath>
+                <LinkChain />
+                <ObjectId>88766267-3c64-4c81-b1c4-2da4942cc2b4</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>4627c974-b2dc-47cd-b15d-8e4ddbcc40d0</ProcessId>
+</WorkflowConfiguration>
