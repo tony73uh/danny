@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>42bfe4b8-e6eb-4dd8-8f23-7e8ac8a974d1</Id>
+  <DisplayName>Terminate Java Instance</DisplayName>
+  <CreatedTime>2020-12-18T23:41:39.4257858Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:39.4257858Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>8a3a7a4b-34c7-4821-bbcc-0e258677cdc3</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ConditionBranchNode">
+        <Id>bfb78377-9edc-4db3-9f76-ab439dd27ba1</Id>
+        <DisplayName>Not Orchestrator Server?</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="CompletedNode">
+            <Id>ba5f8ea5-e2fa-499f-a846-d6b7f563178e</Id>
+            <CompletedType>FailedNotCompleted</CompletedType>
+            <ResultMessage>
+              <FormattedCode>The selected target, {0}, is not an Orchestrator Server target.</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Process.Target.Name</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>ResolvedTarget</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DisplayName</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectType>ProcessInstance</ObjectType>
+                </VariableReference>
+              </References>
+            </ResultMessage>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>d3dfe969-3c59-4a17-966b-8fa492ea176c</Id>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>1d7eb8ca-ba1f-4024-8783-9a61dcca55a5</Id>
+              <Expression xsi:type="SubstitutableBoolean">
+                <HardcodedValue>false</HardcodedValue>
+              </Expression>
+              <Comparison>Equals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Target.Orchestrator Server</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ResolvedTarget</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>IsOrchestratorServer</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>ProcessInstance</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>22d6638b-089c-4988-8a6c-073720d9406c</Id>
+        <DisplayName>Select Java Class Name from Adapater Name</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>205e4573-d3c1-44a0-b8b0-17280cc0a081</Id>
+            <ActivityNodeId>22d6638b-089c-4988-8a6c-073720d9406c</ActivityNodeId>
+            <CompletedId>9bda5bcd-ccd8-4648-829f-e180606de236</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="ExtractTableActivityConfiguration" xml:space="preserve">
+          <Id>22d6638b-089c-4988-8a6c-073720d9406c</Id>
+          <DisplayName>Select Java Class Name from Adapater Name</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>88f7c866-25ba-4441-9c40-707069fb0cf6</ContainingProcessId>
+          <Columns>
+            <BuiltinTableColumn>
+              <Name>Adapter Name</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+            <BuiltinTableColumn>
+              <Name>Java Class Name</Name>
+              <DataType>System.String</DataType>
+            </BuiltinTableColumn>
+          </Columns>
+          <SourceTable xsi:type="PropertyReference">
+            <DisplayPath>Process.Variables.Local.Adapter Mapping Table</DisplayPath>
+            <LinkChain />
+            <ObjectId>30b47e59-ae2f-4137-a431-04efe1795f27</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </SourceTable>
+          <WhereClause>
+            <FormattedCode>[Adapter Name] = '{0}'</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Variables.Input.Adapter Name</DisplayPath>
+                <LinkChain />
+                <ObjectId>72c3fd41-1659-41fe-892e-84d222aff3f1</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </VariableReference>
+            </References>
+          </WhereClause>
+          <SortColumn />
+          <SortOrder>Ascending</SortOrder>
+          <MaxRows>
+            <HardcodedValue>2147483647</HardcodedValue>
+          </MaxRows>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ConditionBranchNode">
+        <Id>013b93a2-5ce1-4e4e-aa08-8efa8d19e9d2</Id>
+        <DisplayName>Invalid Adapter Name?</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="CompletedNode">
+            <Id>ba1aba82-460d-4c72-9f0b-095c4510099a</Id>
+            <CompletedType>FailedNotCompleted</CompletedType>
+            <ResultMessage>
+              <FormattedCode>The specified adapter name, "{0}", does not match any of the following names.
+•	Email
+•	JMX
+•	Sap Java
+•	Terminal
+•	VMware
+•	SNMP
+</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Process.Variables.Input.Adapter Name</DisplayPath>
+                  <LinkChain />
+                  <ObjectId>72c3fd41-1659-41fe-892e-84d222aff3f1</ObjectId>
+                  <ObjectType>GlobalVariable</ObjectType>
+                </VariableReference>
+              </References>
+            </ResultMessage>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>41fb2a6a-3201-4b3c-8e6d-76ce3e5a5aae</Id>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>bd50a4d7-6f93-4bc7-ad05-957d43db0c59</Id>
+              <Expression xsi:type="SubstitutableNumber">
+                <HardcodedValue>0</HardcodedValue>
+              </Expression>
+              <Comparison>Equals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Select Java Class Name from Adapater Name.Result Table.Row Count</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ResultTable</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>RowCount</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>22d6638b-089c-4988-8a6c-073720d9406c</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>19b15e12-ab08-4eb3-8d9c-1e7ae20c7ede</Id>
+        <DisplayName>For Each Java Class Name</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>e0859486-12b9-4c7e-89d0-b70c127a0299</Id>
+            <DisplayName>Execute Windows PowerShell Script</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>939adb49-85a6-4553-adc8-b14170c9060e</Id>
+                <ActivityNodeId>e0859486-12b9-4c7e-89d0-b70c127a0299</ActivityNodeId>
+                <CompletedId>76dd59da-e305-46a9-b934-29b81d2ba9a0</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="WindowsPowerShellScriptActivityConfiguration" xml:space="preserve">
+              <Id>e0859486-12b9-4c7e-89d0-b70c127a0299</Id>
+              <DisplayName>Execute Windows PowerShell Script</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <ContainingProcessId>88f7c866-25ba-4441-9c40-707069fb0cf6</ContainingProcessId>
+              <WorkingDirectory>
+                <HardcodedValue />
+              </WorkingDirectory>
+              <FailReturnCodeNonZero>true</FailReturnCodeNonZero>
+              <UseTaskScheduler>false</UseTaskScheduler>
+              <TimeWindow>
+                <Milliseconds>300000</Milliseconds>
+                <Units>Minutes</Units>
+              </TimeWindow>
+              <Script>
+                <HardcodedValue>$JavaClassName = $args[0]
+$AdapterName = $args[1]
+
+$JavaProcesses = Get-WmiObject -Query "Select ProcessId From Win32_Process where (Name = 'java.exe') And (CommandLine Like'%$JavaClassName%')"
+If ($JavaProcesses)
+{
+    ForEach ($JavaProcess in $JavaProcesses)
+    {
+         Write-Output "Terminate process (PID: $JavaProcess.ProcessId)"
+         Stop-Process -Id $JavaProcess.ProcessId -Force
+    }
+}
+else
+{
+    Write-Output "The adapter '$AdapterName' is not current running"
+}
+</HardcodedValue>
+              </Script>
+              <Arguments>
+                <SubstitutableObject xsi:type="SubstitutableString">
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <DisplayPath>Workflow.For Each Java Class Name.Item.Java Class Name</DisplayPath>
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Java Class Name</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <ObjectId>19b15e12-ab08-4eb3-8d9c-1e7ae20c7ede</ObjectId>
+                      <ObjectType>ActivityInstance</ObjectType>
+                    </VariableReference>
+                  </References>
+                </SubstitutableObject>
+                <SubstitutableObject xsi:type="SubstitutableString">
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <DisplayPath>Process.Variables.Input.Adapter Name</DisplayPath>
+                      <LinkChain />
+                      <ObjectId>72c3fd41-1659-41fe-892e-84d222aff3f1</ObjectId>
+                      <ObjectType>GlobalVariable</ObjectType>
+                    </VariableReference>
+                  </References>
+                </SubstitutableObject>
+              </Arguments>
+              <Use32BitPowerShell>false</Use32BitPowerShell>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Select Java Class Name from Adapater Name.Result Table.Rows</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>ResultTable</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>TIARows</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>22d6638b-089c-4988-8a6c-073720d9406c</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>88f7c866-25ba-4441-9c40-707069fb0cf6</ProcessId>
+</WorkflowConfiguration>

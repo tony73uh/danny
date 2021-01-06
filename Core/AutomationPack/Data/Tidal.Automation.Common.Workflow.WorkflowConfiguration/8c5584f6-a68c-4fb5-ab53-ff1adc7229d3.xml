@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>8c5584f6-a68c-4fb5-ab53-ff1adc7229d3</Id>
+  <DisplayName>Close Expired Incidents</DisplayName>
+  <CreatedTime>2020-12-18T23:41:40.2518374Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:40.2518374Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>2aa337c7-b87e-4b4b-961a-4ea12c9c2230</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>a8385c56-c8a2-4477-b217-743081546e8e</Id>
+        <DisplayName>Close Expired Incident</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>e685d4b0-8313-416a-9e9b-883988958e00</Id>
+            <ActivityNodeId>222c99c3-5540-4611-94c8-b919f52f5b01</ActivityNodeId>
+            <CompletedId>9f79d8ec-9ef2-45d8-8118-1c43d015f76c</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="UpdateIncidentActivityConfiguration" xml:space="preserve">
+          <Id>222c99c3-5540-4611-94c8-b919f52f5b01</Id>
+          <DisplayName>Close Expired Incident</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>b1c7e51e-b1b3-4740-ab42-054a513d87a6</ContainingProcessId>
+          <TaskId>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Triggers.Incident Task Expired.Task.Task Id</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Task</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Id</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>EventInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskId>
+          <ModificationGroup>
+            <ObjectId>00000000-0000-0000-0000-000000000000</ObjectId>
+            <ObjectType>Task</ObjectType>
+            <Modifications>
+              <PropertyModification>
+                <DisplayPath>Task Status.Closed</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Closed</PropertyName>
+                  </Link>
+                </LinkChain>
+                <Action>Set</Action>
+                <Value xsi:type="SubstitutableBoolean">
+                  <HardcodedValue>true</HardcodedValue>
+                </Value>
+              </PropertyModification>
+            </Modifications>
+          </ModificationGroup>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>b1c7e51e-b1b3-4740-ab42-054a513d87a6</ProcessId>
+</WorkflowConfiguration>

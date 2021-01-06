@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RecurringCalendarConfiguration" xml:space="preserve">
+  <Id>cbbf0255-b3a7-4c24-b8a4-a8129573f5a6</Id>
+  <DisplayName>Daily</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.4711012Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.4711012Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <PeriodStartDate>2008-01-01T00:00:00Z</PeriodStartDate>
+  <StartDate>2008-01-01T00:00:00Z</StartDate>
+  <EndDate>9999-12-31T00:00:00Z</EndDate>
+  <PeriodMeasure>Day</PeriodMeasure>
+  <PeriodDuration>1</PeriodDuration>
+  <Days>
+    <Last>false</Last>
+    <Offsets>
+      <int>1</int>
+    </Offsets>
+  </Days>
+  <Weeks>
+    <Last>false</Last>
+    <Offsets />
+  </Weeks>
+  <WeekMask />
+  <Months>
+    <Last>false</Last>
+    <Offsets />
+  </Months>
+  <Quarters>
+    <Last>false</Last>
+    <Offsets />
+  </Quarters>
+  <Years>
+    <Last>false</Last>
+    <Offsets />
+  </Years>
+  <SpecificDates />
+  <SpecialDates />
+</CalendarConfiguration>

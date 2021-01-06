@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<CategoryConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>54b84015-73a0-4050-a17f-9dbac99abfda</Id>
+  <DisplayName>Notification</DisplayName>
+  <Description>Assigned to objects used to notify users via email as part of the process.</Description>
+  <CreatedTime>2020-12-18T23:41:27.6111086Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.6111086Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <SubCategories />
+</CategoryConfiguration>

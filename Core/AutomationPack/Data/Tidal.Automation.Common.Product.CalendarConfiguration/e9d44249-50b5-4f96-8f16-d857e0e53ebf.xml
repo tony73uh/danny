@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GroupCalendarConfiguration" xml:space="preserve">
+  <Id>e9d44249-50b5-4f96-8f16-d857e0e53ebf</Id>
+  <DisplayName>Workdays</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.5381037Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.5381037Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <CalendarEntries>
+    <GroupCalendarEntry>
+      <CalendarId>8b00ca91-6927-4fec-9cf5-fc44f2abddec</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>e347da0f-c3a9-42b9-9dd4-fdd2cba4bc49</CalendarId>
+      <Exclude>true</Exclude>
+    </GroupCalendarEntry>
+  </CalendarEntries>
+</CalendarConfiguration>

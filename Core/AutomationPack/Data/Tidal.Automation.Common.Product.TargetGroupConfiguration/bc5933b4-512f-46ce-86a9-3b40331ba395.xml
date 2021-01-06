@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<TargetGroupConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ByTypeTargetGroupConfiguration" xml:space="preserve">
+  <Id>bc5933b4-512f-46ce-86a9-3b40331ba395</Id>
+  <DisplayName>All Orchestrator Servers (Windows Computers)</DisplayName>
+  <Description>All Windows Computers running Cisco Orchestrator Server for this environment.</Description>
+  <CreatedTime>2020-12-18T23:41:28.5881654Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:28.5881654Z</ModifiedTime>
+  <Enabled>true</Enabled>
+  <TargetType>Tidal.Automation.Windows.Common.WindowsTargetConfiguration, Tidal.Automation.Windows.Common</TargetType>
+  <TargetTypeExtensionId>2097ba7b-3e94-0c5b-8243-90df2cca8626</TargetTypeExtensionId>
+  <TargetCriteria>
+    <ConditionDefinition xsi:type="VariableConditionDefinition">
+      <Id>4c64d6c8-b380-4457-9606-da045ee4f1bb</Id>
+      <Expression xsi:type="SubstitutableBoolean">
+        <HardcodedValue>true</HardcodedValue>
+      </Expression>
+      <Comparison>Equals</Comparison>
+      <VariableReference xsi:type="PropertyReference">
+        <DisplayPath>Windows Computer.Orchestrator Server</DisplayPath>
+        <LinkChain>
+          <Link xsi:type="PropertyNameLink">
+            <PropertyName>IsOrchestratorServer</PropertyName>
+          </Link>
+        </LinkChain>
+        <ObjectType>Target</ObjectType>
+      </VariableReference>
+    </ConditionDefinition>
+  </TargetCriteria>
+</TargetGroupConfiguration>

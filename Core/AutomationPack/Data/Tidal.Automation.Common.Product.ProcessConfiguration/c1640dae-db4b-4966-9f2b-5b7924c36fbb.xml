@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>c1640dae-db4b-4966-9f2b-5b7924c36fbb</Id>
+  <DisplayName>Close Expired Guided Operations Tasks</DisplayName>
+  <Description>Default process to close guided operations tasks that have expired.</Description>
+  <CreatedTime>2020-12-18T23:41:40.4298418Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:40.4298418Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="EventTargetLoadBalancer" />
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>51795588-00ec-47e4-a5c2-df36d1495a1f</WorkflowId>
+  <CategoryIds />
+  <TriggerOwner>5b44380e-8162-456d-8da1-8d6638747e28</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="GuidedOperationTaskExpiredEventDefinition">
+        <Id>b4e68827-c09c-43a8-8486-33e7df2ae806</Id>
+        <DisplayName>Guided Operation Task Expired</DisplayName>
+        <LoadBalancer xsi:type="SingleTargetLoadBalancer">
+          <SingleTargetId>
+            <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+          </SingleTargetId>
+        </LoadBalancer>
+        <Imported>true</Imported>
+        <MatchingCriteria>
+          <GenericCriteria xsi:type="WildcardCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>DisplayName</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingWildcard>
+              <HardcodedValue>*</HardcodedValue>
+            </MatchingWildcard>
+          </GenericCriteria>
+        </MatchingCriteria>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>c745634c-50cb-40ad-90ba-8949eddb4a50</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>7eac6b74-0dea-4cfa-b988-aa12c7e663f2</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions />
+  <Notes />
+  <ROITimeSaved>
+    <Milliseconds>1800000</Milliseconds>
+    <Units>Minutes</Units>
+  </ROITimeSaved>
+  <GeneralHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralHelp>
+  <GeneralInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralInstanceHelp>
+  <InputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputHelp>
+  <InputInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputInstanceHelp>
+  <OutputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </OutputHelp>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Sap.Common.Users.SAPUserConfiguration, Tidal.Automation.Sap.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+  <StoreWhenCompleted>false</StoreWhenCompleted>
+</ProcessConfiguration>

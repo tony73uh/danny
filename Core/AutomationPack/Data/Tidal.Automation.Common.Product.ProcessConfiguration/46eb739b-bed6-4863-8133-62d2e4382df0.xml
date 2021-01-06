@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>46eb739b-bed6-4863-8133-62d2e4382df0</Id>
+  <DisplayName>Default Incident Notification</DisplayName>
+  <Description>Default process to send email when an incident has a new notification recipient</Description>
+  <CreatedTime>2020-12-18T23:41:38.6407383Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:38.6407383Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>48700ac3-7545-4272-ba29-275a5e667737</WorkflowId>
+  <CategoryIds />
+  <TriggerOwner>5b44380e-8162-456d-8da1-8d6638747e28</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="IncidentTaskChangedEventDefinition">
+        <Id>a302a4da-5779-4b3c-a558-57ef466e2e0e</Id>
+        <DisplayName>Incident Task Changed</DisplayName>
+        <LoadBalancer xsi:type="SingleTargetLoadBalancer">
+          <SingleTargetId>
+            <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+          </SingleTargetId>
+        </LoadBalancer>
+        <Imported>true</Imported>
+        <OriginalTaskMatchingCriteria>
+          <GenericCriteria xsi:type="WildcardCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>DisplayName</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingWildcard>
+              <HardcodedValue>*</HardcodedValue>
+            </MatchingWildcard>
+          </GenericCriteria>
+        </OriginalTaskMatchingCriteria>
+        <RevisedTaskMatchingCriteria>
+          <GenericCriteria xsi:type="NumberCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>NotificationRecipientsCount</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingNumber>
+              <HardcodedValue>0</HardcodedValue>
+            </MatchingNumber>
+            <Comparison>GreaterThan</Comparison>
+          </GenericCriteria>
+        </RevisedTaskMatchingCriteria>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>e7acac0b-4e11-4bff-89f5-d01bd08e1c7d</Id>
+        <Conditions>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>4614c454-233c-4381-b146-33d7a58463ad</Id>
+            <Expression xsi:type="SubstitutableBoolean">
+              <HardcodedValue>true</HardcodedValue>
+            </Expression>
+            <Comparison>Equals</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Incident Task Changed.Changed Properties.Notification Recipients Changed</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>ChangedProperties</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>NotificationRecipients</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectType>EventInstance</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>b037ab21-d1cb-411e-a7c1-2e78da24fd41</Id>
+            <Expression xsi:type="SubstitutableNumber">
+              <HardcodedValue>0</HardcodedValue>
+            </Expression>
+            <Comparison>GreaterThan</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Incident Task Changed.Revised Task.Notification Recipients Count</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>NewTask</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>NotificationRecipientsCount</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectType>EventInstance</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>d1594563-2ff5-4096-b07c-ccd8803ef8a4</Id>
+            <Expression xsi:type="SubstitutableString">
+              <HardcodedValue />
+            </Expression>
+            <Comparison>NotEquals</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>DefaultEmailServer</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+              <ObjectType>Adapter</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+        </Conditions>
+      </Condition>
+      <TriggerId>3877ab15-d002-41d6-860b-3b618b0c8752</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="IncidentTaskCreatedEventDefinition">
+        <Id>f8d67a60-dae6-4bb8-b199-17988800af76</Id>
+        <DisplayName>Incident Task Created</DisplayName>
+        <LoadBalancer xsi:type="SingleTargetLoadBalancer">
+          <SingleTargetId>
+            <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+          </SingleTargetId>
+        </LoadBalancer>
+        <Imported>true</Imported>
+        <MatchingCriteria>
+          <GenericCriteria xsi:type="NumberCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>NotificationRecipientsCount</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingNumber>
+              <HardcodedValue>0</HardcodedValue>
+            </MatchingNumber>
+            <Comparison>GreaterThan</Comparison>
+          </GenericCriteria>
+        </MatchingCriteria>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>7a02c330-ab1c-4f6d-a291-85c4e6758222</Id>
+        <Conditions>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>059d61de-3351-40d3-a491-815ea1ee1ebe</Id>
+            <Expression xsi:type="SubstitutableNumber">
+              <HardcodedValue>0</HardcodedValue>
+            </Expression>
+            <Comparison>GreaterThan</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Incident Task Created.Task.Notification Recipients Count</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>Task</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>NotificationRecipientsCount</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectType>EventInstance</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>c67630ef-de45-47b2-a6a0-2d22daeb4400</Id>
+            <Expression xsi:type="SubstitutableString">
+              <HardcodedValue />
+            </Expression>
+            <Comparison>NotEquals</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>DefaultEmailServer</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+              <ObjectType>Adapter</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+        </Conditions>
+      </Condition>
+      <TriggerId>25a3a2b1-42fa-4e2f-97b9-22a3c0a52297</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>11cf8f26-debc-464d-ab96-f4bce1615b91</Id>
+      <DisplayName>Severity</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>46eb739b-bed6-4863-8133-62d2e4382df0</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <ROITimeSaved>
+    <Milliseconds>1800000</Milliseconds>
+    <Units>Minutes</Units>
+  </ROITimeSaved>
+  <GeneralHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralHelp>
+  <GeneralInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralInstanceHelp>
+  <InputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputHelp>
+  <InputInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputInstanceHelp>
+  <OutputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </OutputHelp>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+  <StoreWhenCompleted>false</StoreWhenCompleted>
+</ProcessConfiguration>

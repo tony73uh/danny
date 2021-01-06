@@ -1,0 +1,1528 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>bb0cc396-ef3c-444f-97b8-88747100b9a0</Id>
+  <DisplayName>Default Alert Notification</DisplayName>
+  <CreatedTime>2020-12-18T23:41:40.4948454Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:40.4948454Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>82f00959-d9ed-4c84-a93a-753b812c7c13</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="SwitchNode">
+        <Id>fe22af61-cb64-43d6-8254-7e8e3f087e1b</Id>
+        <DisplayName>Alert Type</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>fc0604d1-c172-465c-bcba-7bb148625c60</Id>
+            <DisplayName>Created</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="SwitchNode">
+                <Id>d23cf0a8-90c5-4734-9f34-d9acd25572de</Id>
+                <DisplayName>Check Severity</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>d0c98b25-0307-48ae-9466-742976e393e3</Id>
+                    <DisplayName>High?</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>bc0dd929-689e-4b35-a9ac-b4b7b6de3be9</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>105d42b0-686a-4941-b007-718109a86af6</Id>
+                            <ActivityNodeId>3330da6b-d266-4e0d-b64d-8b39700e04bb</ActivityNodeId>
+                            <CompletedId>1190e3ef-6ef6-465c-a63c-73bb19309621</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>3330da6b-d266-4e0d-b64d-8b39700e04bb</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>High</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>9945b943-efc9-449c-adad-3bc2046040ad</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Triggers.Alert Task Created.Task.High Severity</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Task</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>HighSeverity</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>EventInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>d83683da-fc77-4044-8ade-1f56ca8b99f4</Id>
+                    <DisplayName>Normal?</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>6d374ca6-c196-4fe7-a41e-dc2dac6e93f2</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>93967b83-4c88-462e-9186-810c2fba4c7c</Id>
+                            <ActivityNodeId>03de6304-e04c-47ed-aaec-a161fefbb07a</ActivityNodeId>
+                            <CompletedId>b46b21df-791c-4349-a9be-9a40084a83ae</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>03de6304-e04c-47ed-aaec-a161fefbb07a</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>Medium</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>9945b943-efc9-449c-adad-3bc2046040ad</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Triggers.Incident Task Created.Task.Normal Severity</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Task</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NormalSeverity</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>EventInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>e2e12a4e-d988-4957-859f-73ac8015ce12</Id>
+                    <DisplayName>Low?</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>e27742ab-4934-456a-9eeb-74f2f010471a</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>d246e2cb-c460-4286-8dcc-7562caed6ef2</Id>
+                            <ActivityNodeId>4b5aba79-2189-4d01-9eef-b11c745a3d04</ActivityNodeId>
+                            <CompletedId>65b68c78-f282-425b-b695-71cd745e1f9c</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>4b5aba79-2189-4d01-9eef-b11c745a3d04</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>Low</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>9945b943-efc9-449c-adad-3bc2046040ad</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Triggers.Incident Task Created.Task.Low Severity</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Task</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>LowSeverity</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>EventInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>1f70cdbf-ae43-4fc4-ae6e-860b48749e2d</Id>
+                    <DisplayName>Other</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>af14dd6d-aa58-41c1-850d-2413effed8ad</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>ef7a0f3f-aca7-46de-aa86-1da37cb3aa31</Id>
+                            <ActivityNodeId>39b25d47-f6b6-460c-a24a-780e03c90361</ActivityNodeId>
+                            <CompletedId>1cc2aa83-68a3-4749-9f61-9f72c26a9a6d</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>39b25d47-f6b6-460c-a24a-780e03c90361</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>Normal</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions />
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+              </ActivityNode>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>cf4438f9-236b-4dcc-9b9e-63340b42131e</Id>
+                <DisplayName>For Each Notification Recipient</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="SequenceNode">
+                    <Id>319a7e3d-e7d3-41d9-b627-c8a73d35cd5b</Id>
+                    <DisplayName />
+                    <Children>
+                      <ActivityNode xsi:type="SwitchNode">
+                        <Id>5e45f737-008e-4fbb-af1a-5ad8ea8be780</Id>
+                        <DisplayName>Affected Target</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="ConditionBranchNode">
+                            <Id>f785e079-77e3-4af3-b586-b01916e66691</Id>
+                            <DisplayName>Has Affected Target</DisplayName>
+                            <Children>
+                              <ActivityNode xsi:type="ExecuteActivityNode">
+                                <Id>401d516d-a28b-432a-b024-9ed751e4b122</Id>
+                                <DisplayName>Email</DisplayName>
+                                <Children>
+                                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                                    <Id>52040797-885c-4d39-b945-9136416dafe6</Id>
+                                    <ActivityNodeId>121f699a-53c4-4731-892c-078c16b9ea12</ActivityNodeId>
+                                    <CompletedId>9b396529-194d-43f4-be30-7a11242b8447</CompletedId>
+                                  </ActivityNode>
+                                </Children>
+                                <Configuration xsi:type="EmailActivityConfiguration" xml:space="preserve">
+                                  <Id>121f699a-53c4-4731-892c-078c16b9ea12</Id>
+                                  <DisplayName>Email</DisplayName>
+                                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                                    <FormattedCode />
+                                    <HardcodedValue>
+                                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                                      <ObjectType>RuntimeUser</ObjectType>
+                                    </HardcodedValue>
+                                  </RuntimeUserObject>
+                                  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+                                    <SingleTargetReference>
+                                      <FormattedCode />
+                                      <HardcodedValue>
+                                        <Id>8817dee9-f402-462f-b5dd-7337716c2d68</Id>
+                                        <ObjectType>Target</ObjectType>
+                                      </HardcodedValue>
+                                    </SingleTargetReference>
+                                  </TargetLoadBalancer>
+                                  <InheritTarget>false</InheritTarget>
+                                  <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                                  <Server>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailServer</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Server>
+                                  <Port>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Port</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailPort</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Port>
+                                  <From>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Sender</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailSender</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </From>
+                                  <To>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Workflow.For Each Notification Recipient.Item</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>cf4438f9-236b-4dcc-9b9e-63340b42131e</ObjectId>
+                                        <ObjectType>ActivityInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </To>
+                                  <Cc>
+                                    <HardcodedValue />
+                                  </Cc>
+                                  <Bcc>
+                                    <HardcodedValue />
+                                  </Bcc>
+                                  <Subject>
+                                    <FormattedCode>"{0}" Alert on {1}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Affected Target Configuration Item.Object Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AffectedTargetConfigurationItem</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>ObjectName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Subject>
+                                  <Message>
+                                    <FormattedCode>Task Time:  {0}
+Class: {1}
+Severity: {2}
+Target: {3}
+Organization: {4}
+Name: {5}
+
+Description: {6}
+
+Automation Summary: {7}
+
+</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Common.Time Stamp</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>TimeStamp</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Alert Class</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AlertClass</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Affected Target Configuration Item.Object Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AffectedTargetConfigurationItem</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>ObjectName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Affected Target.Organization</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AffectedTargetReference</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>GetReferencedObject</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Organization</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DisplayName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Description</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Description</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Automation Summary</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AutomationSummary</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Message>
+                                  <IsHtml>
+                                    <HardcodedValue>false</HardcodedValue>
+                                  </IsHtml>
+                                  <AttachmentUserId>
+                                    <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+                                  </AttachmentUserId>
+                                  <Attachments />
+                                </Configuration>
+                              </ActivityNode>
+                            </Children>
+                            <Condition>
+                              <Id>04e1874a-f4e3-4c4f-b2ee-7d68b6313d91</Id>
+                              <Conditions>
+                                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                                  <Id>4666f51d-394c-401e-964f-52292e60dbeb</Id>
+                                  <Expression xsi:type="SubstitutableBoolean">
+                                    <HardcodedValue>true</HardcodedValue>
+                                  </Expression>
+                                  <Comparison>Equals</Comparison>
+                                  <VariableReference xsi:type="PropertyReference">
+                                    <DisplayPath>Process.Triggers.Alert Task Created.Task.Affects Target Configuration Item</DisplayPath>
+                                    <LinkChain>
+                                      <Link xsi:type="PropertyNameLink">
+                                        <PropertyName>Task</PropertyName>
+                                      </Link>
+                                      <Link xsi:type="PropertyNameLink">
+                                        <PropertyName>AffectsTargetConfigurationItem</PropertyName>
+                                      </Link>
+                                    </LinkChain>
+                                    <ObjectType>EventInstance</ObjectType>
+                                  </VariableReference>
+                                </ConditionDefinition>
+                              </Conditions>
+                            </Condition>
+                          </ActivityNode>
+                          <ActivityNode xsi:type="ConditionBranchNode">
+                            <Id>78303aa5-c5fc-4833-82a2-cffa3f06ba65</Id>
+                            <DisplayName>Else</DisplayName>
+                            <Children>
+                              <ActivityNode xsi:type="ExecuteActivityNode">
+                                <Id>655063cf-1bba-4cd0-ad8a-b8713eef1591</Id>
+                                <DisplayName>Email</DisplayName>
+                                <Children>
+                                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                                    <Id>3bfb029c-35f5-464d-a276-c62de7e684a5</Id>
+                                    <ActivityNodeId>4d462623-76ab-4432-9932-a8965eb88704</ActivityNodeId>
+                                    <CompletedId>e5910cd8-d8da-4434-83ee-1227d291e101</CompletedId>
+                                  </ActivityNode>
+                                </Children>
+                                <Configuration xsi:type="EmailActivityConfiguration" xml:space="preserve">
+                                  <Id>4d462623-76ab-4432-9932-a8965eb88704</Id>
+                                  <DisplayName>Email</DisplayName>
+                                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                                    <FormattedCode />
+                                    <HardcodedValue>
+                                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                                      <ObjectType>RuntimeUser</ObjectType>
+                                    </HardcodedValue>
+                                  </RuntimeUserObject>
+                                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                                    <SingleTargetId>
+                                      <HardcodedValue>8817dee9-f402-462f-b5dd-7337716c2d68</HardcodedValue>
+                                    </SingleTargetId>
+                                  </TargetLoadBalancer>
+                                  <InheritTarget>false</InheritTarget>
+                                  <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                                  <Server>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailServer</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Server>
+                                  <Port>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Port</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailPort</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Port>
+                                  <From>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Sender</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailSender</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </From>
+                                  <To>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Workflow.For Each Notification Recipient.Item</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>cf4438f9-236b-4dcc-9b9e-63340b42131e</ObjectId>
+                                        <ObjectType>ActivityInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </To>
+                                  <Cc>
+                                    <HardcodedValue />
+                                  </Cc>
+                                  <Bcc>
+                                    <HardcodedValue />
+                                  </Bcc>
+                                  <Subject>
+                                    <FormattedCode>"{0}" Alert </FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Subject>
+                                  <Message>
+                                    <FormattedCode>Task Time:  {0}
+Class: {1}
+Severity: {2}
+Target: 
+Name: {3}
+
+Description: {4}
+
+Automation Summary: {5}
+
+</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Time Stamp</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>TimeStamp</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Alert Class</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AlertClass</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DisplayName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Description</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Description</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Automation Summary</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AutomationSummary</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Message>
+                                  <IsHtml>
+                                    <HardcodedValue>false</HardcodedValue>
+                                  </IsHtml>
+                                  <AttachmentUserId>
+                                    <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+                                  </AttachmentUserId>
+                                  <Attachments />
+                                </Configuration>
+                              </ActivityNode>
+                            </Children>
+                            <Condition>
+                              <Id>b6bd9cf7-77f6-4817-a977-5226cc71f1d5</Id>
+                              <Conditions />
+                            </Condition>
+                          </ActivityNode>
+                        </Children>
+                      </ActivityNode>
+                    </Children>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Process.Triggers.Alert Task Created.Task.Notification Recipients</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>Task</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>NotificationRecipients</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectType>EventInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>4a2a8d94-5438-45f9-9e8e-59c61f8a6fd4</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>1442af3c-550b-4309-afdb-b6614228b482</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>Created$</HardcodedValue>
+                  </Expression>
+                  <Comparison>RegularExpression</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Common.Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResolvedDefinition</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DisplayName</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>691aeea4-a837-42d3-8c3c-f2eaf0fa6c0d</Id>
+            <DisplayName>Changed</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="SwitchNode">
+                <Id>032ab0e9-2903-4668-8e1a-a3e13b90c14d</Id>
+                <DisplayName>Check Severity</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>c92c7d3c-4e2a-43ee-aef3-7ace2a8ba68c</Id>
+                    <DisplayName>High?</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>6f2050a0-a2d4-4a50-a5eb-3de88d242722</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>67621a37-595e-4017-a5e1-ce757d2f8b1e</Id>
+                            <ActivityNodeId>2ee9862d-3834-4938-b97d-8ed7d3a9f1c9</ActivityNodeId>
+                            <CompletedId>b8ebb040-6878-4a39-afa3-f45d44e06ef9</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>2ee9862d-3834-4938-b97d-8ed7d3a9f1c9</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>High</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>9945b943-efc9-449c-adad-3bc2046040ad</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Triggers.Incident Task Changed.Revised Task.High Severity</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NewTask</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>HighSeverity</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>EventInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>3e3eab7f-9f0c-44d2-b43d-7ca43dc724b8</Id>
+                    <DisplayName>Normal?</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>7cbdab81-9d37-4d73-87a1-f2f7cddd7e82</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>b2a82102-121a-4976-87c6-d5721e8d5485</Id>
+                            <ActivityNodeId>137c9a97-e9f8-4fcc-a2e1-01ef432aef6f</ActivityNodeId>
+                            <CompletedId>8e227596-d5db-4115-85df-13727e38e512</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>137c9a97-e9f8-4fcc-a2e1-01ef432aef6f</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>Medium</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>9945b943-efc9-449c-adad-3bc2046040ad</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Medium Severity</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NewTask</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NormalSeverity</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>EventInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>fdf25a17-1a7d-43f5-956b-f00d870db6cb</Id>
+                    <DisplayName>Low?</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>2acfe1b3-9d81-41b9-a0f2-4bf70e9bf9cf</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>617582e1-a342-41cd-b99a-f578bb01e85f</Id>
+                            <ActivityNodeId>2fcd105a-bbe3-4613-9027-0486f8451fa2</ActivityNodeId>
+                            <CompletedId>ca86a7ec-7953-4614-8d13-4d544016ea48</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>2fcd105a-bbe3-4613-9027-0486f8451fa2</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>Low</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>9945b943-efc9-449c-adad-3bc2046040ad</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Triggers.Incident Task Changed.Revised Task.Low Severity</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NewTask</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>LowSeverity</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>EventInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>edbee49f-a1e3-40b4-8cc8-5038c55ec58e</Id>
+                    <DisplayName>Other</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>8a3059d3-ebd7-48d6-b12b-2ea730b7cddd</Id>
+                        <DisplayName>Set Severity</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>cf6a24df-9b60-4048-a283-e913ae8f95f1</Id>
+                            <ActivityNodeId>2dfbb5ea-55ed-4b79-81d8-d534b9d16b91</ActivityNodeId>
+                            <CompletedId>ec873b2d-8337-4323-87a2-636b6e403dbb</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="SetVariableActivityConfiguration" xml:space="preserve">
+                          <Id>2dfbb5ea-55ed-4b79-81d8-d534b9d16b91</Id>
+                          <DisplayName>Set Severity</DisplayName>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                          <VariableToSet>
+                            <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                            <LinkChain />
+                            <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                            <ObjectType>GlobalVariable</ObjectType>
+                          </VariableToSet>
+                          <NewValue xsi:type="SubstitutableString">
+                            <HardcodedValue>Normal</HardcodedValue>
+                          </NewValue>
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>927525d0-e876-4bf9-b439-8a0993fd3f8a</Id>
+                      <Conditions />
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+              </ActivityNode>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>358fc377-d125-4578-a680-6c9fe66c87ec</Id>
+                <DisplayName>For Each Notification Recipient</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="SequenceNode">
+                    <Id>3e3cc3b8-dc79-4dcf-a32c-838ca42ea0dc</Id>
+                    <DisplayName />
+                    <Children>
+                      <ActivityNode xsi:type="SwitchNode">
+                        <Id>9ae46178-457b-4328-a671-1aa3d94c6205</Id>
+                        <DisplayName>Affected Target</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="ConditionBranchNode">
+                            <Id>719aa3b1-b6d5-4cf3-95ed-0d5c57e487ce</Id>
+                            <DisplayName>Has Affected Target</DisplayName>
+                            <Children>
+                              <ActivityNode xsi:type="ExecuteActivityNode">
+                                <Id>a6323a12-6753-4a26-b36e-b8bff37c80b9</Id>
+                                <DisplayName>Email</DisplayName>
+                                <Children>
+                                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                                    <Id>eb536830-c9d5-45d4-98ad-baebc7dcd945</Id>
+                                    <ActivityNodeId>5a82583d-1ac8-4702-9f36-3873dc2769e8</ActivityNodeId>
+                                    <CompletedId>9885fb3c-8dda-4fab-a862-4272bfb474fa</CompletedId>
+                                  </ActivityNode>
+                                </Children>
+                                <Configuration xsi:type="EmailActivityConfiguration" xml:space="preserve">
+                                  <Id>5a82583d-1ac8-4702-9f36-3873dc2769e8</Id>
+                                  <DisplayName>Email</DisplayName>
+                                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                                    <FormattedCode />
+                                    <HardcodedValue>
+                                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                                      <ObjectType>RuntimeUser</ObjectType>
+                                    </HardcodedValue>
+                                  </RuntimeUserObject>
+                                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                                    <SingleTargetId>
+                                      <HardcodedValue>8817dee9-f402-462f-b5dd-7337716c2d68</HardcodedValue>
+                                    </SingleTargetId>
+                                  </TargetLoadBalancer>
+                                  <InheritTarget>false</InheritTarget>
+                                  <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                                  <Server>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailServer</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Server>
+                                  <Port>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Port</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailPort</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Port>
+                                  <From>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Sender</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailSender</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </From>
+                                  <To>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Workflow.For Each Notification Recipient.Item</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>358fc377-d125-4578-a680-6c9fe66c87ec</ObjectId>
+                                        <ObjectType>ActivityInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </To>
+                                  <Cc>
+                                    <HardcodedValue />
+                                  </Cc>
+                                  <Bcc>
+                                    <HardcodedValue />
+                                  </Bcc>
+                                  <Subject>
+                                    <FormattedCode>"{0}" Alert on {1}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Affected Target Configuration Item.Object Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AffectedTargetConfigurationItem</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>ObjectName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Subject>
+                                  <Message>
+                                    <FormattedCode>Task Time:  {0}
+Class: {1}
+Severity: {2}
+Target: {3}
+Organization: {4}
+Name: {5}
+
+Description: {6}
+
+Automation Summary: {7}
+</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Time Stamp</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>TimeStamp</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Alert Class</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AlertClass</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Affected Target Configuration Item.Object Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AffectedTargetConfigurationItem</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>ObjectName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Created.Task.Affected Target.Organization</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Task</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AffectedTargetReference</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>GetReferencedObject</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Organization</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DisplayName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Description</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Description</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Automation Summary</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AutomationSummary</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Message>
+                                  <IsHtml>
+                                    <HardcodedValue>false</HardcodedValue>
+                                  </IsHtml>
+                                  <AttachmentUserId>
+                                    <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+                                  </AttachmentUserId>
+                                  <Attachments />
+                                </Configuration>
+                              </ActivityNode>
+                            </Children>
+                            <Condition>
+                              <Id>9097d439-8f54-46a3-9326-693937de7921</Id>
+                              <Conditions>
+                                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                                  <Id>1d725d07-9121-4d47-b2f0-3f144ee45351</Id>
+                                  <Expression xsi:type="SubstitutableBoolean">
+                                    <HardcodedValue>true</HardcodedValue>
+                                  </Expression>
+                                  <Comparison>Equals</Comparison>
+                                  <VariableReference xsi:type="PropertyReference">
+                                    <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Affects Target Configuration Item</DisplayPath>
+                                    <LinkChain>
+                                      <Link xsi:type="PropertyNameLink">
+                                        <PropertyName>NewTask</PropertyName>
+                                      </Link>
+                                      <Link xsi:type="PropertyNameLink">
+                                        <PropertyName>AffectsTargetConfigurationItem</PropertyName>
+                                      </Link>
+                                    </LinkChain>
+                                    <ObjectType>EventInstance</ObjectType>
+                                  </VariableReference>
+                                </ConditionDefinition>
+                              </Conditions>
+                            </Condition>
+                          </ActivityNode>
+                          <ActivityNode xsi:type="ConditionBranchNode">
+                            <Id>f0280d56-80e7-4bce-b8ea-55987c7db8da</Id>
+                            <DisplayName>Condition Branch</DisplayName>
+                            <Children>
+                              <ActivityNode xsi:type="ExecuteActivityNode">
+                                <Id>db0a6f21-ee7d-4914-b977-1de474ee8273</Id>
+                                <DisplayName>Email</DisplayName>
+                                <Children>
+                                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                                    <Id>7b94951e-6615-4abf-9f14-4c6f5fa5d03f</Id>
+                                    <ActivityNodeId>353a2efb-3325-4014-8e86-d5b396d1d980</ActivityNodeId>
+                                    <CompletedId>8b340d9e-6df6-41c8-a941-8b0bfcc5ee44</CompletedId>
+                                  </ActivityNode>
+                                </Children>
+                                <Configuration xsi:type="EmailActivityConfiguration" xml:space="preserve">
+                                  <Id>353a2efb-3325-4014-8e86-d5b396d1d980</Id>
+                                  <DisplayName>Email</DisplayName>
+                                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                                    <FormattedCode />
+                                    <HardcodedValue>
+                                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                                      <ObjectType>RuntimeUser</ObjectType>
+                                    </HardcodedValue>
+                                  </RuntimeUserObject>
+                                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                                    <SingleTargetId>
+                                      <HardcodedValue>8817dee9-f402-462f-b5dd-7337716c2d68</HardcodedValue>
+                                    </SingleTargetId>
+                                  </TargetLoadBalancer>
+                                  <InheritTarget>false</InheritTarget>
+                                  <ContainingProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ContainingProcessId>
+                                  <Server>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailServer</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Server>
+                                  <Port>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Port</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailPort</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Port>
+                                  <From>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Adapters.Email Adapter.Default Email Sender</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DefaultEmailSender</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                        <ObjectType>Adapter</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </From>
+                                  <To>
+                                    <FormattedCode>{0}</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Workflow.For Each Notification Recipient.Item</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>358fc377-d125-4578-a680-6c9fe66c87ec</ObjectId>
+                                        <ObjectType>ActivityInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </To>
+                                  <Cc>
+                                    <HardcodedValue />
+                                  </Cc>
+                                  <Bcc>
+                                    <HardcodedValue />
+                                  </Bcc>
+                                  <Subject>
+                                    <FormattedCode>"{0}" Alert</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Subject>
+                                  <Message>
+                                    <FormattedCode>Task Time:  {0}
+Class: {1}
+Severity: {2}
+Target: 
+Name: {3}
+
+Description: {4}
+
+Automation Summary: {5}
+</FormattedCode>
+                                    <References>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Time Stamp</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>TimeStamp</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Alert Class</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AlertClass</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Variables.Local.Severity</DisplayPath>
+                                        <LinkChain />
+                                        <ObjectId>9ebad38d-018c-4f95-a5ac-a4c06a08944a</ObjectId>
+                                        <ObjectType>GlobalVariable</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Name</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>DisplayName</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Description</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>Description</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                      <VariableReference xsi:type="PropertyReference">
+                                        <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Automation Summary</DisplayPath>
+                                        <LinkChain>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>NewTask</PropertyName>
+                                          </Link>
+                                          <Link xsi:type="PropertyNameLink">
+                                            <PropertyName>AutomationSummary</PropertyName>
+                                          </Link>
+                                        </LinkChain>
+                                        <ObjectType>EventInstance</ObjectType>
+                                      </VariableReference>
+                                    </References>
+                                  </Message>
+                                  <IsHtml>
+                                    <HardcodedValue>false</HardcodedValue>
+                                  </IsHtml>
+                                  <AttachmentUserId>
+                                    <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+                                  </AttachmentUserId>
+                                  <Attachments />
+                                </Configuration>
+                              </ActivityNode>
+                            </Children>
+                            <Condition>
+                              <Id>05f9ecb2-29eb-48e2-85fc-b36b0bc37c2b</Id>
+                              <Conditions />
+                            </Condition>
+                          </ActivityNode>
+                        </Children>
+                      </ActivityNode>
+                    </Children>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Process.Triggers.Alert Task Changed.Revised Task.Notification Recipients</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>NewTask</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>NotificationRecipients</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectType>EventInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>4a2a8d94-5438-45f9-9e8e-59c61f8a6fd4</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>1442af3c-550b-4309-afdb-b6614228b482</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>Changed$</HardcodedValue>
+                  </Expression>
+                  <Comparison>RegularExpression</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Common.Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResolvedDefinition</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DisplayName</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>c4522cb5-5b61-485b-9bd6-8f5e567e9687</ProcessId>
+</WorkflowConfiguration>

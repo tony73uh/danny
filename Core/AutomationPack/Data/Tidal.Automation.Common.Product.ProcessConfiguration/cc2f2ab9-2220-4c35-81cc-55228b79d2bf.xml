@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>cc2f2ab9-2220-4c35-81cc-55228b79d2bf</Id>
+  <DisplayName>Default Approval Request Notification Based on Assignment</DisplayName>
+  <Description>Default process to send email when an approval request gets assigned.</Description>
+  <CreatedTime>2020-12-18T23:41:40.7668629Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:40.7668629Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>0aa8f819-3ceb-4f2f-a195-8763ed8aae31</WorkflowId>
+  <CategoryIds />
+  <TriggerOwner>3735b75d-4080-4632-a3b4-185384d778ce</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="ApprovalTaskCreatedEventDefinition">
+        <Id>a2e81a24-b4b3-494d-9235-d78f1cd0e1b5</Id>
+        <DisplayName>Approval Request Task Created</DisplayName>
+        <LoadBalancer xsi:type="SingleTargetLoadBalancer">
+          <SingleTargetId>
+            <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+          </SingleTargetId>
+        </LoadBalancer>
+        <Imported>true</Imported>
+        <MatchingCriteria>
+          <GenericCriteria xsi:type="WildcardCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>DisplayName</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingWildcard>
+              <HardcodedValue>*</HardcodedValue>
+            </MatchingWildcard>
+          </GenericCriteria>
+        </MatchingCriteria>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>b75f6d99-eb36-45a9-b09c-5a0cc98fb11c</Id>
+        <Conditions>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>b9a744c3-d3d0-44a8-8f4d-d96e828982b4</Id>
+            <Expression xsi:type="SubstitutableNumber">
+              <HardcodedValue>0</HardcodedValue>
+            </Expression>
+            <Comparison>GreaterThan</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Approval Request Task Created.Task.Assignees Count</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>Task</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>AssigneesCount</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectType>EventInstance</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+        </Conditions>
+      </Condition>
+      <TriggerId>a2bcc13e-7cec-4674-b999-7e9fb7e4bb55</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="ApprovalTaskChangedEventDefinition">
+        <Id>0011c46a-6e15-474f-96e1-a7122106ab34</Id>
+        <DisplayName>Approval Request Task Changed</DisplayName>
+        <LoadBalancer xsi:type="SingleTargetLoadBalancer">
+          <SingleTargetId>
+            <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+          </SingleTargetId>
+        </LoadBalancer>
+        <Imported>true</Imported>
+        <OriginalTaskMatchingCriteria>
+          <GenericCriteria xsi:type="WildcardCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>DisplayName</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingWildcard>
+              <HardcodedValue>*</HardcodedValue>
+            </MatchingWildcard>
+          </GenericCriteria>
+        </OriginalTaskMatchingCriteria>
+        <RevisedTaskMatchingCriteria>
+          <GenericCriteria xsi:type="WildcardCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>DisplayName</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingWildcard>
+              <HardcodedValue>*</HardcodedValue>
+            </MatchingWildcard>
+          </GenericCriteria>
+        </RevisedTaskMatchingCriteria>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>d36b335d-e87f-4d35-88ff-e4c4eb37dc13</Id>
+        <Conditions>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>35d539aa-7c5e-454d-87cf-70287c5eb4bc</Id>
+            <Expression xsi:type="SubstitutableNumber">
+              <HardcodedValue>0</HardcodedValue>
+            </Expression>
+            <Comparison>GreaterThan</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Approval Request Task Changed.Revised Task.Assignees Count</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>NewTask</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>AssigneesCount</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectType>EventInstance</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+          <ConditionDefinition xsi:type="VariableConditionDefinition">
+            <Id>082ff18d-fa49-4a22-9e1b-8dfd043c6e5c</Id>
+            <Expression xsi:type="SubstitutableBoolean">
+              <HardcodedValue>true</HardcodedValue>
+            </Expression>
+            <Comparison>Equals</Comparison>
+            <VariableReference xsi:type="PropertyReference">
+              <DisplayPath>Approval Request Task Changed.Changed Properties.Assignees Changed</DisplayPath>
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>ChangedProperties</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>Assignees</PropertyName>
+                </Link>
+              </LinkChain>
+              <ObjectType>EventInstance</ObjectType>
+            </VariableReference>
+          </ConditionDefinition>
+        </Conditions>
+      </Condition>
+      <TriggerId>9c1b806c-c227-458c-bf54-77048e587b7e</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions />
+  <Notes />
+  <Enabled>false</Enabled>
+  <ROITimeSaved>
+    <Milliseconds>1800000</Milliseconds>
+    <Units>Minutes</Units>
+  </ROITimeSaved>
+  <GeneralHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralHelp>
+  <GeneralInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralInstanceHelp>
+  <InputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputHelp>
+  <InputInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputInstanceHelp>
+  <OutputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </OutputHelp>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+  <StoreWhenCompleted>false</StoreWhenCompleted>
+</ProcessConfiguration>

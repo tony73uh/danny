@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DateListCalendarConfiguration" xml:space="preserve">
+  <Id>7f91fab3-9ba0-4db1-b0c7-37a3e1905e5b</Id>
+  <DisplayName>Good Friday (US)</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.3700945Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.3700945Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <DateList>
+    <dateTime>2012-04-06T00:00:00Z</dateTime>
+    <dateTime>2014-04-18T00:00:00Z</dateTime>
+    <dateTime>2010-04-02T00:00:00Z</dateTime>
+    <dateTime>2016-03-25T00:00:00Z</dateTime>
+    <dateTime>2013-03-29T00:00:00Z</dateTime>
+    <dateTime>2018-03-30T00:00:00Z</dateTime>
+    <dateTime>2015-04-03T00:00:00Z</dateTime>
+    <dateTime>2019-04-19T00:00:00Z</dateTime>
+    <dateTime>2011-04-22T00:00:00Z</dateTime>
+    <dateTime>2017-04-14T00:00:00Z</dateTime>
+  </DateList>
+</CalendarConfiguration>

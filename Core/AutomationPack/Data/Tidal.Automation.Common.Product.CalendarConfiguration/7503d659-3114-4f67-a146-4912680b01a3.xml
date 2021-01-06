@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RecurringCalendarConfiguration" xml:space="preserve">
+  <Id>7503d659-3114-4f67-a146-4912680b01a3</Id>
+  <DisplayName>New Years Day</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.3590969Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.3590969Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <PeriodStartDate>2008-01-01T00:00:00Z</PeriodStartDate>
+  <StartDate>2008-01-01T00:00:00Z</StartDate>
+  <EndDate>9999-12-31T00:00:00Z</EndDate>
+  <PeriodMeasure>Year</PeriodMeasure>
+  <PeriodDuration>1</PeriodDuration>
+  <Days>
+    <Last>false</Last>
+    <Offsets />
+  </Days>
+  <Weeks>
+    <Last>false</Last>
+    <Offsets />
+  </Weeks>
+  <WeekMask />
+  <Months>
+    <Last>false</Last>
+    <Offsets />
+  </Months>
+  <Quarters>
+    <Last>false</Last>
+    <Offsets />
+  </Quarters>
+  <Years>
+    <Last>false</Last>
+    <Offsets />
+  </Years>
+  <SpecificDates>
+    <DayOfMonth>
+      <Month>1</Month>
+      <Day>1</Day>
+    </DayOfMonth>
+  </SpecificDates>
+  <SpecialDates />
+</CalendarConfiguration>

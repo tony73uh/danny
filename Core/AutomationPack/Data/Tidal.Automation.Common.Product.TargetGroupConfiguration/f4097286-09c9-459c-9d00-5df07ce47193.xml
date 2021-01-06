@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<TargetGroupConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ByTypeTargetGroupConfiguration" xml:space="preserve">
+  <Id>f4097286-09c9-459c-9d00-5df07ce47193</Id>
+  <DisplayName>All SNMP Servers (Managers)</DisplayName>
+  <Description>All SNMP Server (Manager)  targets.</Description>
+  <CreatedTime>2020-12-18T23:41:38.8137484Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:38.8137484Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <TargetType>Tidal.Automation.Snmp.Common.SnmpManagerTargetConfiguration, Tidal.Automation.Snmp.Common</TargetType>
+  <TargetTypeExtensionId>00000000-0000-0000-0000-000000000000</TargetTypeExtensionId>
+  <TargetCriteria />
+</TargetGroupConfiguration>

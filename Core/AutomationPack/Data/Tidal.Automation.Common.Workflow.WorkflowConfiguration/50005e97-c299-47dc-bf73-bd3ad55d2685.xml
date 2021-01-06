@@ -1,0 +1,444 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>50005e97-c299-47dc-bf73-bd3ad55d2685</Id>
+  <DisplayName>Self Monitoring - Persistent Queue Error</DisplayName>
+  <CreatedTime>2020-12-18T23:41:37.2896831Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:37.2896831Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>a005cfcb-0e27-434e-a8ec-c33c21e33ebc</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>bf0c51eb-2271-4a0b-ba08-9bea67a0c873</Id>
+        <DisplayName>Persistent Queue Warning</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>d5c1a199-4146-4acb-a37e-ecfa3c5e4a71</Id>
+            <ActivityNodeId>4aa21772-b7ff-41db-9a07-38d01c5f16c0</ActivityNodeId>
+            <CompletedId>739228c4-fcbb-4f8f-b075-306959ea46c9</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="AlertActivityConfiguration" xml:space="preserve">
+          <Id>4aa21772-b7ff-41db-9a07-38d01c5f16c0</Id>
+          <DisplayName>Persistent Queue Warning</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>326c0f49-0d40-43b1-b689-6c9a69d4d8f0</ContainingProcessId>
+          <TaskExpiresPeriod>
+            <DisplayUnits>Days</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </TaskExpiresPeriod>
+          <TaskAssignees />
+          <TaskPriority>Medium</TaskPriority>
+          <TaskBlock>false</TaskBlock>
+          <TaskXslFileName>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Adapters.Core Functions Adapter.Default Alert Task Transform</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>DefaultAlertTaskTransform</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                <ObjectType>Adapter</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskXslFileName>
+          <TaskName>
+            <HardcodedValue>Persistent Queue Warning</HardcodedValue>
+          </TaskName>
+          <TaskDescription>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Triggers.Orchestrator Persistent Queue Event.Event Description</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Description</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>EventInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskDescription>
+          <TaskCategoryIds />
+          <TaskInheritCategories>true</TaskInheritCategories>
+          <TaskRelatedIds />
+          <ExternalSystem>
+            <HardcodedValue />
+          </ExternalSystem>
+          <ExternalId>
+            <HardcodedValue />
+          </ExternalId>
+          <TaskOwner>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Target.Owner</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ResolvedTarget</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Owner</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>ProcessInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskOwner>
+          <TaskParameters>
+            <NamedSubstitutableParameter>
+              <DisplayName>Parameter 1:</DisplayName>
+              <Parameter>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Orchestrator Persistent Queue Event.Category</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Category</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </Parameter>
+            </NamedSubstitutableParameter>
+          </TaskParameters>
+          <AffectedServices>
+            <HardcodedValue />
+          </AffectedServices>
+          <AffectedOrganizations>
+            <HardcodedValue />
+          </AffectedOrganizations>
+          <AffectedTargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <DiagnosticReportConfiguration>
+            <ReportStylesheet>SituationReport.xsl</ReportStylesheet>
+            <Formats>
+              <DiagnosticReportFormatEntry>
+                <Id>60ec138f-78c4-4ce0-a146-b6e2ee284c73</Id>
+                <Format xsi:type="SituationReportFormat">
+                  <Problem>true</Problem>
+                  <Section>SituationAnalysis</Section>
+                </Format>
+              </DiagnosticReportFormatEntry>
+              <DiagnosticReportFormatEntry>
+                <Id>4aa21772-b7ff-41db-9a07-38d01c5f16c0</Id>
+                <Format xsi:type="SituationReportFormat">
+                  <Section>SituationAnalysis</Section>
+                </Format>
+              </DiagnosticReportFormatEntry>
+            </Formats>
+          </DiagnosticReportConfiguration>
+          <AlertClass>
+            <HardcodedValue>1027</HardcodedValue>
+          </AlertClass>
+          <MatchingCriteria>
+            <GenericCriteria xsi:type="AlertMatchingNumberCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>AlertClass</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingNumber>
+                <HardcodedValue>0</HardcodedValue>
+              </MatchingNumber>
+              <Comparison>Equals</Comparison>
+              <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+            </GenericCriteria>
+            <GenericCriteria xsi:type="AlertMatchingStringCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>AffectedTargetConfigurationItem</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>ObjectName</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingString>
+                <HardcodedValue>*</HardcodedValue>
+              </MatchingString>
+              <Comparison>Equals</Comparison>
+              <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+            </GenericCriteria>
+            <GenericCriteria xsi:type="AlertMatchingStringCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>Parameter1</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingString>
+                <HardcodedValue>*</HardcodedValue>
+              </MatchingString>
+              <Comparison>Equals</Comparison>
+              <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+            </GenericCriteria>
+          </MatchingCriteria>
+          <MatchingTimePeriod>
+            <DisplayUnits>Hours</DisplayUnits>
+            <Period>
+              <HardcodedValue>3</HardcodedValue>
+            </Period>
+          </MatchingTimePeriod>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ConditionBranchNode">
+        <Id>b90b7011-3a6f-4ed5-adab-0bcb2a815f0d</Id>
+        <DisplayName>Isnt Duplicate</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>6ff23e9b-84da-4b58-b4b3-ad8993920e09</Id>
+            <DisplayName>Persistent Queue Warning</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>172996e8-ab35-4286-8784-0219000c5b6c</Id>
+                <ActivityNodeId>d1812892-2652-4f9d-9709-e851cdee5859</ActivityNodeId>
+                <CompletedId>56fef71a-e0d1-4cbd-913d-348f27d15645</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="IncidentActivityConfiguration" xml:space="preserve">
+              <Id>d1812892-2652-4f9d-9709-e851cdee5859</Id>
+              <DisplayName>Persistent Queue Warning</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>326c0f49-0d40-43b1-b689-6c9a69d4d8f0</ContainingProcessId>
+              <TaskExpiresPeriod>
+                <DisplayUnits>Days</DisplayUnits>
+                <Period>
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                      <ObjectType>Adapter</ObjectType>
+                    </VariableReference>
+                  </References>
+                </Period>
+              </TaskExpiresPeriod>
+              <TaskAssignees />
+              <TaskPriority>High</TaskPriority>
+              <TaskBlock>false</TaskBlock>
+              <TaskXslFileName>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Adapters.Core Functions Adapter.Default Incident Task Transform</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DefaultIncidentTaskTransform</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                    <ObjectType>Adapter</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskXslFileName>
+              <TaskName>
+                <HardcodedValue>Persistent Queue Warning</HardcodedValue>
+              </TaskName>
+              <TaskDescription>
+                <FormattedCode>{0}
+
+Verify the connection from the Cisco Process Orchestrator server to its Reporting Database is up and running well.</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Orchestrator Persistent Queue Event.Event Description</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Description</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskDescription>
+              <TaskCategoryIds />
+              <TaskInheritCategories>true</TaskInheritCategories>
+              <TaskRelatedIds />
+              <ExternalSystem>
+                <HardcodedValue />
+              </ExternalSystem>
+              <ExternalId>
+                <HardcodedValue />
+              </ExternalId>
+              <TaskOwner>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Target.Owner</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResolvedTarget</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Owner</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>ProcessInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskOwner>
+              <TaskParameters />
+              <AffectedServices>
+                <HardcodedValue />
+              </AffectedServices>
+              <AffectedOrganizations>
+                <HardcodedValue />
+              </AffectedOrganizations>
+              <AffectedTargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <DiagnosticReportConfiguration>
+                <ReportStylesheet>SituationReport.xsl</ReportStylesheet>
+                <Formats>
+                  <DiagnosticReportFormatEntry>
+                    <Id>60ec138f-78c4-4ce0-a146-b6e2ee284c73</Id>
+                    <Format xsi:type="SituationReportFormat">
+                      <Section>SituationAnalysis</Section>
+                    </Format>
+                  </DiagnosticReportFormatEntry>
+                  <DiagnosticReportFormatEntry>
+                    <Id>d1812892-2652-4f9d-9709-e851cdee5859</Id>
+                    <Format xsi:type="SituationReportFormat">
+                      <Section>SituationAnalysis</Section>
+                    </Format>
+                  </DiagnosticReportFormatEntry>
+                </Formats>
+              </DiagnosticReportConfiguration>
+              <IncidentClass>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Persistent Queue Warning.Task.Alert Class</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Task</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>AlertClass</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>4aa21772-b7ff-41db-9a07-38d01c5f16c0</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </IncidentClass>
+              <IncidentIdentifier>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Adapters.Core Functions Adapter.Default Generated Incident ID</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DefaultGeneratedIncidentID</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                    <ObjectType>Adapter</ObjectType>
+                  </VariableReference>
+                </References>
+              </IncidentIdentifier>
+              <ReportingUser>
+                <HardcodedValue />
+              </ReportingUser>
+              <ReportingUserDetails>
+                <HardcodedValue />
+              </ReportingUserDetails>
+              <CausalAlertIds>
+                <SubstitutableGuid>
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <DisplayPath>Workflow.Persistent Queue Warning.Task.Task Id</DisplayPath>
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Task</PropertyName>
+                        </Link>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Id</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <ObjectId>4aa21772-b7ff-41db-9a07-38d01c5f16c0</ObjectId>
+                      <ObjectType>ActivityInstance</ObjectType>
+                    </VariableReference>
+                  </References>
+                </SubstitutableGuid>
+              </CausalAlertIds>
+              <ResolveCausalAlerts>
+                <HardcodedValue>true</HardcodedValue>
+              </ResolveCausalAlerts>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>9afcfae3-b163-417f-8c3b-1eee0b3846cc</Id>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>2e0037ea-68fb-4f19-bb4d-114e35c754f7</Id>
+              <Expression xsi:type="SubstitutableBoolean">
+                <HardcodedValue>false</HardcodedValue>
+              </Expression>
+              <Comparison>Equals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Third Persistent Queue Full.Task.Is Duplicate</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Task</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>IsDuplicate</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>4aa21772-b7ff-41db-9a07-38d01c5f16c0</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>326c0f49-0d40-43b1-b689-6c9a69d4d8f0</ProcessId>
+</WorkflowConfiguration>

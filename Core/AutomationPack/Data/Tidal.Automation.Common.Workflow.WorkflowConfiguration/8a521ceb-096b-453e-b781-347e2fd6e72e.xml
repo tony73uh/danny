@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>8a521ceb-096b-453e-b781-347e2fd6e72e</Id>
+  <DisplayName>Default SNMP Trap Notification</DisplayName>
+  <CreatedTime>2020-12-18T23:41:38.8457532Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:38.8457532Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>5b2aa449-fd61-46d3-84cd-3f789f277027</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>050b3590-cd0b-42c6-bd94-f1fee60b4272</Id>
+        <DisplayName>Generate SNMP Trap From Task</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>8166af20-bb02-4a04-a686-a1efb6899f7d</Id>
+            <ActivityNodeId>f9c06aeb-5b99-4e28-a52e-bbed743efb30</ActivityNodeId>
+            <CompletedId>78dfcbd9-792e-4b80-85cd-e838d656a255</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SnmpGenerateTrapFromTaskActivityConfiguration" xml:space="preserve">
+          <Id>f9c06aeb-5b99-4e28-a52e-bbed743efb30</Id>
+          <DisplayName>Generate SNMP Trap From Task</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <ContainingProcessId>4b486848-7a57-4dd0-b016-5253978fad63</ContainingProcessId>
+          <TimeOutPeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <HardcodedValue>5</HardcodedValue>
+            </Period>
+          </TimeOutPeriod>
+          <TaskId>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Triggers.Alert Task Created.Task.Task Id</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Task</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Id</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>EventInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskId>
+          <TaskServerId>00000000-0000-0000-0000-000000000000</TaskServerId>
+          <AffectedTargetId>00000000-0000-0000-0000-000000000000</AffectedTargetId>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>4b486848-7a57-4dd0-b016-5253978fad63</ProcessId>
+</WorkflowConfiguration>

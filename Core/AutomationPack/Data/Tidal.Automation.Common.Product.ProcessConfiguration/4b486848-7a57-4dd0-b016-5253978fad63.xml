@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>4b486848-7a57-4dd0-b016-5253978fad63</Id>
+  <DisplayName>Default SNMP Trap Notification</DisplayName>
+  <Description>Default process to send SNMP traps when an alert is created.</Description>
+  <CreatedTime>2020-12-18T23:41:38.8607519Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:38.8607519Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="BroadcastLoadBalancer">
+    <TargetGroupId>f4097286-09c9-459c-9d00-5df07ce47193</TargetGroupId>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>8a521ceb-096b-453e-b781-347e2fd6e72e</WorkflowId>
+  <CategoryIds />
+  <TriggerOwner>3735b75d-4080-4632-a3b4-185384d778ce</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AlertTaskCreatedEventDefinition">
+        <Id>441ec627-fffb-4fba-8ca9-463e78f24db4</Id>
+        <DisplayName>Alert Task Created</DisplayName>
+        <LoadBalancer xsi:type="SingleTargetLoadBalancer">
+          <SingleTargetId>
+            <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+          </SingleTargetId>
+        </LoadBalancer>
+        <Imported>true</Imported>
+        <MatchingCriteria>
+          <GenericCriteria xsi:type="WildcardCriteria">
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>DisplayName</PropertyName>
+              </Link>
+            </LinkChain>
+            <MatchingWildcard>
+              <HardcodedValue>*</HardcodedValue>
+            </MatchingWildcard>
+          </GenericCriteria>
+        </MatchingCriteria>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>b557e8dd-6ac7-4381-b74d-b559358617b9</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>1d856782-5d59-4a34-959c-07a7ed22881f</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions />
+  <Notes />
+  <Enabled>false</Enabled>
+  <ROITimeSaved>
+    <Milliseconds>1800000</Milliseconds>
+    <Units>Minutes</Units>
+  </ROITimeSaved>
+  <GeneralHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralHelp>
+  <GeneralInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralInstanceHelp>
+  <InputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputHelp>
+  <InputInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputInstanceHelp>
+  <OutputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </OutputHelp>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.Snmp.Common.SnmpManagerTargetConfiguration, Tidal.Automation.Snmp.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>51badf11-2688-d07c-e9a3-eb88a4f723c5</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Sap.Common.Users.SAPUserConfiguration, Tidal.Automation.Sap.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+  <StoreWhenCompleted>false</StoreWhenCompleted>
+</ProcessConfiguration>

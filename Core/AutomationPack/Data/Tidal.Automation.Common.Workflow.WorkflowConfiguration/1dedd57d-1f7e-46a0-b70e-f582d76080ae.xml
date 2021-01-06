@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>1dedd57d-1f7e-46a0-b70e-f582d76080ae</Id>
+  <DisplayName>Publish Core Alerts on Windows Event Log</DisplayName>
+  <CreatedTime>2020-12-18T23:41:28.0431411Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:28.0431411Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>176e6720-35f7-4dd5-b374-8180d1465204</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>f5424a2e-0bca-4d8f-9fde-a1d0ee256b12</Id>
+        <DisplayName>Publish Alert to Event Log</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>2dbe6f3c-0576-4f56-9567-41f64e24aa86</Id>
+            <ActivityNodeId>917e94fb-8559-42a0-af56-be9a047122ad</ActivityNodeId>
+            <CompletedId>17d6bd03-5763-4855-bb17-d85f563e393c</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="PublishTaskToEventLogActivityConfiguration" xml:space="preserve">
+          <Id>917e94fb-8559-42a0-af56-be9a047122ad</Id>
+          <DisplayName>Publish Alert to Event Log</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>03ce4419-4557-4928-93fa-ecf979b2a8f8</ContainingProcessId>
+          <TaskId>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Triggers.Alert Task Created.Task.Task Id</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Task</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Id</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>EventInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskId>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>03ce4419-4557-4928-93fa-ecf979b2a8f8</ProcessId>
+</WorkflowConfiguration>

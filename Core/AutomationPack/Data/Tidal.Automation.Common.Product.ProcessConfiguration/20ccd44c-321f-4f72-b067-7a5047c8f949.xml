@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>20ccd44c-321f-4f72-b067-7a5047c8f949</Id>
+  <DisplayName>Self Monitoring - Collect Service Performance Counters</DisplayName>
+  <Description>Default process to collect performance data about the Cisco Process Orchestrator Service.</Description>
+  <CreatedTime>2020-12-18T23:41:36.3936125Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:36.3936125Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>6a69c45f-2b24-468d-8053-15a10f105e54</WorkflowId>
+  <CategoryIds>
+    <guid>0aeadc4b-19f3-4d4e-a14b-efd72b3b7892</guid>
+  </CategoryIds>
+  <TriggerOwner>5b44380e-8162-456d-8da1-8d6638747e28</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="ScheduleDefinition">
+        <Id>df25bd14-0e4a-4b82-9bc5-1a49580156fa</Id>
+        <DisplayName>Schedule</DisplayName>
+        <Imported>true</Imported>
+        <CalendarId>cbbf0255-b3a7-4c24-b8a4-a8129573f5a6</CalendarId>
+        <TimeOfDay>PT0S</TimeOfDay>
+        <TimeZoneId>29c480f4-f660-81e2-2655-a68cf04d91da</TimeZoneId>
+        <NumberOfRuns>96</NumberOfRuns>
+        <Interval>PT15M</Interval>
+        <SharedOwnership>true</SharedOwnership>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>5dccf79d-805a-42a4-9314-e045f6973ca5</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>cc45063d-58e6-43cd-a18b-50da0167ef7b</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>1baf0c87-c776-4bac-8523-7c77dad14571</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>1ed23d74-aa5d-4066-a093-1cfad80e43db</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>5a2b5a2a-7509-4509-9e80-edc7d87fdab5</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>bfe29a3a-3f61-418f-9c7f-8488888c2b52</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>4e584765-4d7a-4878-a338-23ad82b80c16</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>3662d6b5-7ff7-49df-a0a1-6770a8aa99f2</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="TableVariableConfiguration" xml:space="preserve">
+      <Id>978cac04-2790-4a2e-ab16-efdfcc97c8f5</Id>
+      <DisplayName>Performance Data</DisplayName>
+      <FixedSchemaDataTable>
+        <FixedSchema>
+          <Columns>
+            <TableSchemaColumn>
+              <Name>Object Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Counter Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Instance Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Value</Name>
+              <DataType>System.Double</DataType>
+            </TableSchemaColumn>
+          </Columns>
+        </FixedSchema>
+      </FixedSchemaDataTable>
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>20ccd44c-321f-4f72-b067-7a5047c8f949</ControllingItemId>
+      </Scope>
+      <VariableTypeId>27fc86d1-8ae5-d1a4-8d06-88ee0acd318a</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <GeneralHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralHelp>
+  <GeneralInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralInstanceHelp>
+  <InputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputHelp>
+  <InputInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputInstanceHelp>
+  <OutputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </OutputHelp>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+  <ResumeWhenInterrupted>false</ResumeWhenInterrupted>
+  <SelfRouted>true</SelfRouted>
+  <StoreWhenCompleted>false</StoreWhenCompleted>
+  <MustStoreOnError>true</MustStoreOnError>
+  <ProcessOverlapBehavior>OnlyRunOnDifferentTarget</ProcessOverlapBehavior>
+</ProcessConfiguration>

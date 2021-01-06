@@ -1,0 +1,637 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>987eb8bd-cfb4-497a-a6db-a9de481e2697</Id>
+  <DisplayName>Self Monitoring - Collect Persistence Queues Performance Counters</DisplayName>
+  <CreatedTime>2020-12-18T23:41:39.9898176Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:39.9898176Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>c3e7b5b5-325b-46d1-97a2-55a3abbfee24</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>f83089e6-df19-4d87-8b06-4a33aa878459</Id>
+        <DisplayName>Collect Persistent Queue Used Space</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>0dd69362-8e26-4e78-9447-3e6c100b6a9d</Id>
+            <ActivityNodeId>6b11d037-8461-48e3-8826-3b67af571f47</ActivityNodeId>
+            <CompletedId>41617932-2488-46b8-9ddc-d2799deb736f</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+          <Id>6b11d037-8461-48e3-8826-3b67af571f47</Id>
+          <DisplayName>Collect Persistent Queue Used Space</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="OrchestratorServerLoadBalancer">
+            <TargetGroupId>bc5933b4-512f-46ce-86a9-3b40331ba395</TargetGroupId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ContainingProcessId>
+          <InstanceName>
+            <HardcodedValue>*</HardcodedValue>
+          </InstanceName>
+          <CounterName>
+            <HardcodedValue>% Used Space</HardcodedValue>
+          </CounterName>
+          <ObjectName>
+            <HardcodedValue>Cisco Process Orchestrator Persistent Queue</HardcodedValue>
+          </ObjectName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>8a51fc40-ffae-407e-bae4-84bf70e915cc</Id>
+        <DisplayName>For Each Used Space</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>03a6a451-7d8a-4ed6-ae49-82491dbc9368</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>84a0584e-98af-4176-aae4-5d31379e5c1c</Id>
+                <DisplayName>Add Used Space to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>ac949646-0c4c-43e9-824c-512bcda5d0e5</Id>
+                    <ActivityNodeId>ecdda848-6577-46fe-8655-c30e184b235f</ActivityNodeId>
+                    <CompletedId>559ec6e0-f9f8-4e11-b28f-ea41b8721898</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>ecdda848-6577-46fe-8655-c30e184b235f</Id>
+                  <DisplayName>Add Used Space to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Perfrmance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>ef97ed9c-84a7-4f79-83a1-964cf91c452f</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Used Space.Item.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8a51fc40-ffae-407e-bae4-84bf70e915cc</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}\{1}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Persistent Queue Used Space.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>6b11d037-8461-48e3-8826-3b67af571f47</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Used Space.Item.Instance Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Instance Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8a51fc40-ffae-407e-bae4-84bf70e915cc</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Used Space.Item.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8a51fc40-ffae-407e-bae4-84bf70e915cc</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Used Space.Item.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8a51fc40-ffae-407e-bae4-84bf70e915cc</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Collect Persistent Queue Used Space.Performance Value Table.Rows</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>PerformanceCountersTable</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>TIARows</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>6b11d037-8461-48e3-8826-3b67af571f47</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>3f1b7b0c-9bb0-488a-b858-160314ac03b0</Id>
+        <DisplayName>Collect Persistent Queue Submits</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>2614d642-5e94-44cd-9b23-c4bb516be728</Id>
+            <ActivityNodeId>96622b70-fae9-4cbd-9030-9749976eeed8</ActivityNodeId>
+            <CompletedId>ad01f3a9-2bd3-45f6-a330-9579815403a2</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+          <Id>96622b70-fae9-4cbd-9030-9749976eeed8</Id>
+          <DisplayName>Collect Persistent Queue Submits</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+            <ActivityId>6b11d037-8461-48e3-8826-3b67af571f47</ActivityId>
+            <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ContainingProcessId>
+          <InstanceName>
+            <HardcodedValue>*</HardcodedValue>
+          </InstanceName>
+          <CounterName>
+            <HardcodedValue>Queue Item Submits/sec</HardcodedValue>
+          </CounterName>
+          <ObjectName>
+            <HardcodedValue>Cisco Process Orchestrator Persistent Queue</HardcodedValue>
+          </ObjectName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>143c4dc2-3a9e-49b4-ac52-2d0c8c6bd1de</Id>
+        <DisplayName>For Each Submit</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>34b821ed-5310-4fac-9a28-d00447aab675</Id>
+            <DisplayName>Add Submits to Perf Data Table</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>76cdc1b8-49dd-4e0e-b8c0-fa52064762d8</Id>
+                <ActivityNodeId>d7e5d286-5a09-4591-818d-8325d51e92d0</ActivityNodeId>
+                <CompletedId>647235ad-37bb-4d84-bb0a-e07cf98eaf14</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+              <Id>d7e5d286-5a09-4591-818d-8325d51e92d0</Id>
+              <DisplayName>Add Submits to Perf Data Table</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ContainingProcessId>
+              <TableVariable>
+                <DisplayPath>Process.Variables.Local.Perfrmance Data</DisplayPath>
+                <LinkChain />
+                <ObjectId>ef97ed9c-84a7-4f79-83a1-964cf91c452f</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </TableVariable>
+              <Values>
+                <BuiltinDataCellValue>
+                  <ColumnName>Counter Name</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Submit.Item.Counter Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Counter Name</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>143c4dc2-3a9e-49b4-ac52-2d0c8c6bd1de</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+                <BuiltinDataCellValue>
+                  <ColumnName>Instance Name</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}\{1}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Collect Persistent Queue Submits.Target.Computer Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>ResolvedTarget</PropertyName>
+                          </Link>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>NetBiosName</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>96622b70-fae9-4cbd-9030-9749976eeed8</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Submit.Item.Instance Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Instance Name</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>143c4dc2-3a9e-49b4-ac52-2d0c8c6bd1de</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+                <BuiltinDataCellValue>
+                  <ColumnName>Object Name</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Submit.Item.Object Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Object Name</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>143c4dc2-3a9e-49b4-ac52-2d0c8c6bd1de</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+                <BuiltinDataCellValue>
+                  <ColumnName>Value</ColumnName>
+                  <Value xsi:type="SubstitutableNumber">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Submit.Item.Value</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Value</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>143c4dc2-3a9e-49b4-ac52-2d0c8c6bd1de</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+              </Values>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Collect Persistent Queue Submits.Performance Value Table.Rows</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>PerformanceCountersTable</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>TIARows</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>96622b70-fae9-4cbd-9030-9749976eeed8</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>a3aaf269-0f06-43de-b151-456cc5b360f4</Id>
+        <DisplayName>Collect Persistent Queue Items</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>463e90d3-9325-4572-a7d2-d1fe7b5effa9</Id>
+            <ActivityNodeId>c44d765f-56ee-49ce-9cbe-56f441557d77</ActivityNodeId>
+            <CompletedId>ed6158fd-edd2-4085-b6cd-68e9ced29ec8</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+          <Id>c44d765f-56ee-49ce-9cbe-56f441557d77</Id>
+          <DisplayName>Collect Persistent Queue Items</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+            <ActivityId>6b11d037-8461-48e3-8826-3b67af571f47</ActivityId>
+            <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ContainingProcessId>
+          <InstanceName>
+            <HardcodedValue>*</HardcodedValue>
+          </InstanceName>
+          <CounterName>
+            <HardcodedValue>Queue Items</HardcodedValue>
+          </CounterName>
+          <ObjectName>
+            <HardcodedValue>Cisco Process Orchestrator Persistent Queue</HardcodedValue>
+          </ObjectName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ForEachNode">
+        <Id>87420437-cbe8-48aa-9b9d-3578c04b3737</Id>
+        <DisplayName>For Each Item</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>2ef05ecb-0e4c-4e27-8504-3c2eabedb0c6</Id>
+            <DisplayName>Add Items to Perf Data Table</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>4e28f91e-1239-4b79-84bc-7637efb34471</Id>
+                <ActivityNodeId>9f5cb593-66aa-4e35-8c81-e3f83c6500c4</ActivityNodeId>
+                <CompletedId>2f6ac759-716d-4b30-96ab-f3dd9cd0ab50</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+              <Id>9f5cb593-66aa-4e35-8c81-e3f83c6500c4</Id>
+              <DisplayName>Add Items to Perf Data Table</DisplayName>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ContainingProcessId>
+              <TableVariable>
+                <DisplayPath>Process.Variables.Local.Perfrmance Data</DisplayPath>
+                <LinkChain />
+                <ObjectId>ef97ed9c-84a7-4f79-83a1-964cf91c452f</ObjectId>
+                <ObjectType>GlobalVariable</ObjectType>
+              </TableVariable>
+              <Values>
+                <BuiltinDataCellValue>
+                  <ColumnName>Counter Name</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Item.Item.Counter Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Counter Name</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>87420437-cbe8-48aa-9b9d-3578c04b3737</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+                <BuiltinDataCellValue>
+                  <ColumnName>Instance Name</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}\{1}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.Collect Persistent Queue Items.Target.Computer Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>ResolvedTarget</PropertyName>
+                          </Link>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>NetBiosName</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>c44d765f-56ee-49ce-9cbe-56f441557d77</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Item.Item.Instance Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Instance Name</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>87420437-cbe8-48aa-9b9d-3578c04b3737</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+                <BuiltinDataCellValue>
+                  <ColumnName>Object Name</ColumnName>
+                  <Value xsi:type="SubstitutableString">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Item.Item.Object Name</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Object Name</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>87420437-cbe8-48aa-9b9d-3578c04b3737</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+                <BuiltinDataCellValue>
+                  <ColumnName>Value</ColumnName>
+                  <Value xsi:type="SubstitutableNumber">
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Workflow.For Each Item.Item.Value</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Value</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>87420437-cbe8-48aa-9b9d-3578c04b3737</ObjectId>
+                        <ObjectType>ActivityInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </Value>
+                </BuiltinDataCellValue>
+              </Values>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <ForEachSource xsi:type="PropertyReference">
+          <DisplayPath>Workflow.Collect Persistent Queue Items.Performance Value Table.Rows</DisplayPath>
+          <LinkChain>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>PerformanceCountersTable</PropertyName>
+            </Link>
+            <Link xsi:type="PropertyNameLink">
+              <PropertyName>TIARows</PropertyName>
+            </Link>
+          </LinkChain>
+          <ObjectId>c44d765f-56ee-49ce-9cbe-56f441557d77</ObjectId>
+          <ObjectType>ActivityInstance</ObjectType>
+        </ForEachSource>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>d5d4af92-6f51-4ac6-8e1f-0b788312091d</Id>
+        <DisplayName>Insert Multiple Metrics</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>39e4f46c-beba-4749-be3f-68f90ab97d09</Id>
+            <ActivityNodeId>3fd05fa1-ab4e-420a-bb1e-54dc6adf5295</ActivityNodeId>
+            <CompletedId>a50ca706-6597-4053-bcde-60735baa0daa</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="InsertPerformanceMetricsActivityConfiguration" xml:space="preserve">
+          <Id>3fd05fa1-ab4e-420a-bb1e-54dc6adf5295</Id>
+          <DisplayName>Insert Multiple Metrics</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ContainingProcessId>
+          <TableSource xsi:type="PropertyReference">
+            <DisplayPath>Process.Variables.Local.Perfrmance Data</DisplayPath>
+            <LinkChain />
+            <ObjectId>ef97ed9c-84a7-4f79-83a1-964cf91c452f</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </TableSource>
+          <AffectedTargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+            <ActivityId>6b11d037-8461-48e3-8826-3b67af571f47</ActivityId>
+            <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+          </AffectedTargetLoadBalancer>
+          <ConfigurationItemIsCMDBReference>false</ConfigurationItemIsCMDBReference>
+          <Object>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Object Name</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Object Name</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>3fd05fa1-ab4e-420a-bb1e-54dc6adf5295</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Object>
+          <Counter>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Counter Name</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Counter Name</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>3fd05fa1-ab4e-420a-bb1e-54dc6adf5295</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Counter>
+          <Value>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Value</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Value</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>3fd05fa1-ab4e-420a-bb1e-54dc6adf5295</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Value>
+          <Instance>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Instance Name</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Instance Name</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>3fd05fa1-ab4e-420a-bb1e-54dc6adf5295</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Instance>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>aa65828f-5f3c-4adc-8a05-0771eaaa6dfc</ProcessId>
+</WorkflowConfiguration>

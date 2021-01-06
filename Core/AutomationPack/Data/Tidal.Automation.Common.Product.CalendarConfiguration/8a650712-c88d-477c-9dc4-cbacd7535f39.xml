@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RecurringCalendarConfiguration" xml:space="preserve">
+  <Id>8a650712-c88d-477c-9dc4-cbacd7535f39</Id>
+  <DisplayName>Thanksgiving (US)</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.3930967Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.3930967Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <PeriodStartDate>2008-01-01T00:00:00Z</PeriodStartDate>
+  <StartDate>2008-01-01T00:00:00Z</StartDate>
+  <EndDate>9999-12-31T00:00:00Z</EndDate>
+  <PeriodMeasure>Year</PeriodMeasure>
+  <PeriodDuration>1</PeriodDuration>
+  <Days>
+    <Last>false</Last>
+    <Offsets />
+  </Days>
+  <Weeks>
+    <Last>false</Last>
+    <Offsets />
+  </Weeks>
+  <WeekMask />
+  <Months>
+    <Last>false</Last>
+    <Offsets />
+  </Months>
+  <Quarters>
+    <Last>false</Last>
+    <Offsets />
+  </Quarters>
+  <Years>
+    <Last>false</Last>
+    <Offsets />
+  </Years>
+  <SpecificDates />
+  <SpecialDates>
+    <SpecialDate>
+      <Day>Thursday</Day>
+      <Month>11</Month>
+      <Number>4</Number>
+    </SpecialDate>
+  </SpecialDates>
+</CalendarConfiguration>

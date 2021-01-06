@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<AutomationPackConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>4bf83767-bb0c-4235-9537-d06e6299f2ea</Id>
+  <DisplayName>Core</DisplayName>
+  <Description>This automation pack will import the default content to support other automation packs.</Description>
+  <VersionNumber>-1</VersionNumber>
+  <CreatedTime>2011-08-04T16:29:59.529129Z</CreatedTime>
+  <ModifiedTime>2021-01-06T16:12:00.4125333Z</ModifiedTime>
+  <CompanyName>Cisco Systems, Inc.</CompanyName>
+  <Version>3.5.13.29</Version>
+  <ExportProductVersion>3.5.13.28</ExportProductVersion>
+  <PublishDate>2021-01-06T16:12:00.4195919Z</PublishDate>
+  <ImportDate>2020-12-18T23:41:41.1718886Z</ImportDate>
+  <DescriptionUrl />
+  <Copyright>Cisco Systems, Inc. 2009-2020</Copyright>
+  <ObjectEntries />
+  <AutomationPacks />
+  <Adapters>
+    <AdapterInfo>
+      <Id>cee9d27d-289e-4b68-89ce-e2093ee50a0f</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Terminal Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides support for executing commands and scripts using SSH and Telnet connections.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>042b6e8a-90b1-4518-aa3e-398399e1b195</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Core Functions Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides core functionality that is required by the Cisco Process Orchestrator Server.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>e95e2c95-d69e-46f1-baf0-5d1009d7e169</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Microsoft Windows Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides access to Windows activities and objects.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>6458928f-0738-4525-92d5-97a675bda758</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Email Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides support for sending emails via SMTP and receiving emails via POP3 and IMAP email accounts.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>52ffa1e3-16e7-4aaf-b775-c5195940c2fa</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Oracle Database Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides activities to access Oracle database objects and execute SQL queries.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>e5128d48-9ee6-439f-8173-26e9e0bc79d5</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Microsoft SQL Server Database Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides activities to access Microsoft SQL Server database objects and execute SQL queries.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>77bb0089-be35-4ef6-8618-9b0f75a69e3b</Id>
+      <Company>Cisco</Company>
+      <DisplayName>Microsoft Active Directory Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides access to Microsoft Active Directory groups, containers and organizational units.</Description>
+    </AdapterInfo>
+    <AdapterInfo>
+      <Id>b402cf78-2fe7-11de-bdb8-8eb455d89593</Id>
+      <Company>Cisco</Company>
+      <DisplayName>SNMP Adapter</DisplayName>
+      <Version>3.0.0.0</Version>
+      <Description>Provides activities to send SNMP traps.</Description>
+    </AdapterInfo>
+  </Adapters>
+  <PageEntries>
+    <PageEntry>
+      <TypeName>Tidal.Automation.EmailAdapter.WinForms.Setup.KeystorePassworkImportTask, Tidal.Automation.EmailAdapter.WinForms</TypeName>
+      <Parameters />
+    </PageEntry>
+    <PageEntry>
+      <TypeName>Tidal.Automation.EmailAdapter.WinForms.AdapterSetupPage, Tidal.Automation.EmailAdapter.WinForms</TypeName>
+      <Parameters />
+    </PageEntry>
+    <PageEntry>
+      <TypeName>Tidal.Automation.BuiltinAdapter.WinForms.AdapterDiagnosticReportPage, Tidal.Automation.BuiltinAdapter.WinForms</TypeName>
+      <Parameters />
+    </PageEntry>
+    <PageEntry>
+      <TypeName>Tidal.Automation.WinForms.ImportAutomationPack.ImportDataExtractionTask, Tidal.Automation.WinForms.Objects</TypeName>
+      <Parameters />
+    </PageEntry>
+  </PageEntries>
+  <PrerequisiteEntries />
+  <ReplaceUnexportableObject>true</ReplaceUnexportableObject>
+  <CommunityAP>false</CommunityAP>
+  <ImportCompanyNames />
+  <AdapterPrerequisiteIds>
+    <guid>1da8b62c-01a5-4482-b251-93ab91cb54fd</guid>
+    <guid>9451aaac-2ce3-403d-af2a-6110621f4a78</guid>
+    <guid>50ffcf56-4cc6-4107-8294-2306066777df</guid>
+    <guid>19ac70ff-f91a-4b15-a93e-2abeca5d500f</guid>
+    <guid>798e100b-de11-4855-8ff1-3d9d786b6c90</guid>
+    <guid>f6900502-011b-42a5-a50a-66c0e488544e</guid>
+  </AdapterPrerequisiteIds>
+  <StyleCheckerIds />
+  <AlwaysArchive>false</AlwaysArchive>
+  <Patches />
+</AutomationPackConfiguration>

@@ -1,0 +1,388 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>5a4b9b68-f57b-4d35-bc40-832cc679b836</Id>
+  <DisplayName>Default Change Request Notification</DisplayName>
+  <CreatedTime>2020-12-18T23:41:34.7255123Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:34.7255123Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>f89fbb47-956f-4482-b956-efbecf3cde89</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="SwitchNode">
+        <Id>f7528e0c-0a41-46fd-89e7-f73cfc0d0780</Id>
+        <DisplayName>Approval Type</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>f5c61831-d711-4da1-9d12-219a1ac024a1</Id>
+            <DisplayName>Created</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>8353cc9d-965e-4c9d-a2de-65fc137f7de0</Id>
+                <DisplayName>For Each Notification Recipient</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="SequenceNode">
+                    <Id>1e6bf8ad-4913-458b-bbfc-3f3c2253640e</Id>
+                    <DisplayName />
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>4a560923-11dd-4269-be02-acef3a7cc725</Id>
+                        <DisplayName>Email</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>13d684bf-6c0c-49f8-92f6-e6c72d7fad56</Id>
+                            <ActivityNodeId>14606a60-4794-498a-a6b5-acb5262824bd</ActivityNodeId>
+                            <CompletedId>1bfcff36-a7dc-4dbd-8ede-a49976910543</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="EmailActivityConfiguration" xml:space="preserve">
+                          <Id>14606a60-4794-498a-a6b5-acb5262824bd</Id>
+                          <DisplayName>Email</DisplayName>
+                          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                            <FormattedCode />
+                            <HardcodedValue>
+                              <Id>00000000-0000-0000-0000-000000000000</Id>
+                              <ObjectType>RuntimeUser</ObjectType>
+                            </HardcodedValue>
+                          </RuntimeUserObject>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>8817dee9-f402-462f-b5dd-7337716c2d68</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>1859706b-87d6-4d5c-8837-72996ae992f3</ContainingProcessId>
+                          <Server>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>DefaultEmailServer</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                <ObjectType>Adapter</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Server>
+                          <Port>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Adapters.Email Adapter.Default Email Port</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>DefaultEmailPort</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                <ObjectType>Adapter</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Port>
+                          <From>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Adapters.Email Adapter.Default Email Sender</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>DefaultEmailSender</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                <ObjectType>Adapter</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </From>
+                          <To>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Notification Recipient.Item</DisplayPath>
+                                <LinkChain />
+                                <ObjectId>8353cc9d-965e-4c9d-a2de-65fc137f7de0</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </To>
+                          <Cc>
+                            <HardcodedValue />
+                          </Cc>
+                          <Bcc>
+                            <HardcodedValue />
+                          </Bcc>
+                          <Subject>
+                            <FormattedCode>Change Request created at {0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Process.Triggers.Common.Time Stamp</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>TimeStamp</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectType>EventInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Subject>
+                          <Message>
+                            <FormattedCode>Change Request URL:
+{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Process.Triggers.Change Request Created.Task.Task URL</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Task</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>TaskUrl</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectType>EventInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Message>
+                          <IsHtml>
+                            <HardcodedValue>false</HardcodedValue>
+                          </IsHtml>
+                          <AttachmentUserId>
+                            <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+                          </AttachmentUserId>
+                          <Attachments />
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Process.Triggers.Change Request Created.Task.Notification Recipients</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>Task</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>NotificationRecipients</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectType>EventInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>25239300-b850-43e3-bc20-47ea49649395</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>46721656-98f4-446b-bad2-be409ccbf83b</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>Created$</HardcodedValue>
+                  </Expression>
+                  <Comparison>RegularExpression</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Common.Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResolvedDefinition</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DisplayName</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>38272bce-b556-469f-ac88-547c530501c5</Id>
+            <DisplayName>Changed</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>96465f0d-bbbd-48f6-8641-7f4dc290a34e</Id>
+                <DisplayName>For Each Notification Recipient</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="SequenceNode">
+                    <Id>7544f7ea-e8de-4c56-8d96-933c679051f9</Id>
+                    <DisplayName />
+                    <Children>
+                      <ActivityNode xsi:type="ExecuteActivityNode">
+                        <Id>2871b194-7fa5-4252-a258-0094b3f3b205</Id>
+                        <DisplayName>Email</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                            <Id>ed6346da-26ef-4e0b-a3ac-4db9cd323e7f</Id>
+                            <ActivityNodeId>752a47b1-45c9-4d07-936b-16b677cdb06b</ActivityNodeId>
+                            <CompletedId>92fde3f7-11cd-47a1-98e9-64a7634c0cc1</CompletedId>
+                          </ActivityNode>
+                        </Children>
+                        <Configuration xsi:type="EmailActivityConfiguration" xml:space="preserve">
+                          <Id>752a47b1-45c9-4d07-936b-16b677cdb06b</Id>
+                          <DisplayName>Email</DisplayName>
+                          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                            <FormattedCode />
+                            <HardcodedValue>
+                              <Id>00000000-0000-0000-0000-000000000000</Id>
+                              <ObjectType>RuntimeUser</ObjectType>
+                            </HardcodedValue>
+                          </RuntimeUserObject>
+                          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                            <SingleTargetId>
+                              <HardcodedValue>8817dee9-f402-462f-b5dd-7337716c2d68</HardcodedValue>
+                            </SingleTargetId>
+                          </TargetLoadBalancer>
+                          <InheritTarget>false</InheritTarget>
+                          <ContainingProcessId>1859706b-87d6-4d5c-8837-72996ae992f3</ContainingProcessId>
+                          <Server>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Adapters.Email Adapter.Default Email Server</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>DefaultEmailServer</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                <ObjectType>Adapter</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Server>
+                          <Port>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Adapters.Email Adapter.Default Email Port</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>DefaultEmailPort</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                <ObjectType>Adapter</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Port>
+                          <From>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Adapters.Email Adapter.Default Email Sender</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>DefaultEmailSender</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>6458928f-0738-4525-92d5-97a675bda758</ObjectId>
+                                <ObjectType>Adapter</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </From>
+                          <To>
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each Notification Recipient.Item</DisplayPath>
+                                <LinkChain />
+                                <ObjectId>96465f0d-bbbd-48f6-8641-7f4dc290a34e</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </To>
+                          <Cc>
+                            <HardcodedValue />
+                          </Cc>
+                          <Bcc>
+                            <HardcodedValue />
+                          </Bcc>
+                          <Subject>
+                            <FormattedCode>Change Request updated at {0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Process.Triggers.Common.Time Stamp</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>TimeStamp</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectType>EventInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Subject>
+                          <Message>
+                            <FormattedCode>Change  Request URL:
+{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Process.Triggers.Change Request Changed.Revised Task.Task URL</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>NewTask</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>TaskUrl</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectType>EventInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Message>
+                          <IsHtml>
+                            <HardcodedValue>false</HardcodedValue>
+                          </IsHtml>
+                          <AttachmentUserId>
+                            <HardcodedValue>00000000-0000-0000-0000-000000000000</HardcodedValue>
+                          </AttachmentUserId>
+                          <Attachments />
+                        </Configuration>
+                      </ActivityNode>
+                    </Children>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Process.Triggers.Change Request Changed.Revised Task.Notification Recipients</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>NewTask</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>NotificationRecipients</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectType>EventInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>25239300-b850-43e3-bc20-47ea49649395</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>46721656-98f4-446b-bad2-be409ccbf83b</Id>
+                  <Expression xsi:type="SubstitutableString">
+                    <HardcodedValue>Changed$</HardcodedValue>
+                  </Expression>
+                  <Comparison>RegularExpression</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Common.Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResolvedDefinition</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DisplayName</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>1859706b-87d6-4d5c-8837-72996ae992f3</ProcessId>
+</WorkflowConfiguration>

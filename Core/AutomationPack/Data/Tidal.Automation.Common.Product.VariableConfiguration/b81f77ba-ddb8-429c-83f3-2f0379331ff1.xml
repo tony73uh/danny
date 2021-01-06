@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<VariableConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TableVariableConfiguration" xml:space="preserve">
+  <Id>b81f77ba-ddb8-429c-83f3-2f0379331ff1</Id>
+  <DisplayName>Orchestrator Self Monitoring Thresholds</DisplayName>
+  <Description>This global variable has thresholds for Cisco Process Orchestrator monitoring.</Description>
+  <CreatedTime>2020-12-18T23:41:30.1562556Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:30.1562556Z</ModifiedTime>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-209125451-689648040-410060929-19026</SecurityIdentifier>
+  </Owner>
+  <Version>3.5.13.28</Version>
+  <FixedSchemaDataTable>
+    <Row>
+      <Data>
+        <string>Running Process Instances</string>
+        <double>1000</double>
+      </Data>
+    </Row>
+    <Row>
+      <Data>
+        <string>In-Memory Process Instances</string>
+        <double>1000</double>
+      </Data>
+    </Row>
+    <Row>
+      <Data>
+        <string>TEO Server Private Bytes (MBytes)</string>
+        <double>4000</double>
+      </Data>
+    </Row>
+    <Row>
+      <Data>
+        <string>TEO External Processes  Private Bytes (MBytes)</string>
+        <double>1000</double>
+      </Data>
+    </Row>
+    <FixedSchema>
+      <Columns>
+        <TableSchemaColumn>
+          <Name>Metric</Name>
+          <DataType>System.String</DataType>
+        </TableSchemaColumn>
+        <TableSchemaColumn>
+          <Name>Maximum Threshold</Name>
+          <DataType>System.Double</DataType>
+        </TableSchemaColumn>
+      </Columns>
+    </FixedSchema>
+  </FixedSchemaDataTable>
+  <Scope>
+    <Family>Global</Family>
+    <ControllingItemId>00000000-0000-0000-0000-000000000000</ControllingItemId>
+  </Scope>
+  <VariableTypeId>27fc86d1-8ae5-d1a4-8d06-88ee0acd318a</VariableTypeId>
+  <CustomPropertiesString />
+</VariableConfiguration>

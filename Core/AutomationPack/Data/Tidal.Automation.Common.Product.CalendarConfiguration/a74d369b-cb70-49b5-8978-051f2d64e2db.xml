@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RecurringCalendarConfiguration" xml:space="preserve">
+  <Id>a74d369b-cb70-49b5-8978-051f2d64e2db</Id>
+  <DisplayName>Every Monday</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.4380958Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.4380958Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <PeriodStartDate>2008-01-01T00:00:00Z</PeriodStartDate>
+  <StartDate>2008-01-01T00:00:00Z</StartDate>
+  <EndDate>9999-12-31T00:00:00Z</EndDate>
+  <PeriodMeasure>Week</PeriodMeasure>
+  <PeriodDuration>1</PeriodDuration>
+  <Days>
+    <Last>false</Last>
+    <Offsets />
+  </Days>
+  <Weeks>
+    <Last>false</Last>
+    <Offsets>
+      <int>1</int>
+    </Offsets>
+  </Weeks>
+  <WeekMask>
+    <DayOfWeek>Monday</DayOfWeek>
+  </WeekMask>
+  <Months>
+    <Last>false</Last>
+    <Offsets />
+  </Months>
+  <Quarters>
+    <Last>false</Last>
+    <Offsets />
+  </Quarters>
+  <Years>
+    <Last>false</Last>
+    <Offsets />
+  </Years>
+  <SpecificDates />
+  <SpecialDates />
+</CalendarConfiguration>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<CategoryConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>d11b265a-49aa-48da-a35b-a3d30a90b4a0</Id>
+  <DisplayName>Examples</DisplayName>
+  <Description>Assigned to objects which are example object.</Description>
+  <CreatedTime>2020-12-18T23:41:27.6211109Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.6211109Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <SubCategories />
+</CategoryConfiguration>

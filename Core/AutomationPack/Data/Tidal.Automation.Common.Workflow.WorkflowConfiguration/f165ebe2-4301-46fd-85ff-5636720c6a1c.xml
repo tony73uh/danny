@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>f165ebe2-4301-46fd-85ff-5636720c6a1c</Id>
+  <DisplayName>Close Expired Approval Requests</DisplayName>
+  <CreatedTime>2020-12-18T23:41:34.5655041Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:34.5655041Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>e29ca180-27f5-443b-b7b7-3d4505f26d41</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>cbc2d5ac-75a5-43e8-b822-fc8ca9ba043d</Id>
+        <DisplayName>Close Expired Approval Request</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>07493665-522e-489b-9119-9d002a5fe3ec</Id>
+            <ActivityNodeId>241f8f13-56f4-474b-b7a0-90a151265585</ActivityNodeId>
+            <CompletedId>540bf1d6-2a11-4e5a-84bc-5eeeb35197b1</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="UpdateApprovalActivityConfiguration" xml:space="preserve">
+          <Id>241f8f13-56f4-474b-b7a0-90a151265585</Id>
+          <DisplayName>Close Expired Approval Request</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>171ec633-5d81-4a7f-8520-d70ca358c6b5</ContainingProcessId>
+          <TaskId>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Triggers.Approval Request Task Expired.Task.Task Id</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Task</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Id</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>EventInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskId>
+          <ModificationGroup>
+            <ObjectId>00000000-0000-0000-0000-000000000000</ObjectId>
+            <ObjectType>Task</ObjectType>
+            <Modifications>
+              <PropertyModification>
+                <DisplayPath>Task Status.Completed</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Completed</PropertyName>
+                  </Link>
+                </LinkChain>
+                <Action>Set</Action>
+                <Value xsi:type="SubstitutableBoolean">
+                  <HardcodedValue>true</HardcodedValue>
+                </Value>
+              </PropertyModification>
+            </Modifications>
+          </ModificationGroup>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>171ec633-5d81-4a7f-8520-d70ca358c6b5</ProcessId>
+</WorkflowConfiguration>

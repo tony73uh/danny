@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>88f7c866-25ba-4441-9c40-707069fb0cf6</Id>
+  <DisplayName>Terminate Java Instance</DisplayName>
+  <Description>Locate the java.exe launched by the specified adapter and terminte it.</Description>
+  <CreatedTime>2020-12-18T23:41:39.4627864Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:39.4627864Z</ModifiedTime>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="RequireOverrideLoadBalancer" />
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>42bfe4b8-e6eb-4dd8-8f23-7e8ac8a974d1</WorkflowId>
+  <CategoryIds />
+  <TriggerOwner>5b44380e-8162-456d-8da1-8d6638747e28</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>88f76cc7-66c2-40c2-9acc-52681ff5dead</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>ecc0dbd6-a74b-44ff-bb59-d91cb37a455b</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>fdd56045-7a82-4bae-a571-5f1b227c26ef</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>2ee4ff73-607a-4f50-b751-411b8a285fb7</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>accef527-03a1-4cef-b748-189cfdb82cda</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>81c34c59-cd8a-4b73-8d6c-7dd6f0ef4580</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="TableVariableConfiguration" xml:space="preserve">
+      <Id>30b47e59-ae2f-4137-a431-04efe1795f27</Id>
+      <DisplayName>Adapter Mapping Table</DisplayName>
+      <ModifiedTime>2016-03-31T19:51:47.8596656Z</ModifiedTime>
+      <FixedSchemaDataTable>
+        <Row>
+          <Data>
+            <string>Email</string>
+            <string>com.tidalsoft.service.email.EmailServiceApp</string>
+          </Data>
+        </Row>
+        <Row>
+          <Data>
+            <string>Terminal</string>
+            <string>com.tidalsoft.service.ssh.SSHApp</string>
+          </Data>
+        </Row>
+        <Row>
+          <Data>
+            <string>VMware</string>
+            <string>com.tidalsoft.service.vmware.VMwareApp</string>
+          </Data>
+        </Row>
+        <Row>
+          <Data>
+            <string>SNMP</string>
+            <string>com.tidalsoft.service.snmpadapter.SNMPAdapterApp</string>
+          </Data>
+        </Row>
+        <FixedSchema>
+          <Columns>
+            <TableSchemaColumn>
+              <Name>Adapter Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Java Class Name</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+          </Columns>
+        </FixedSchema>
+      </FixedSchemaDataTable>
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>88f7c866-25ba-4441-9c40-707069fb0cf6</ControllingItemId>
+      </Scope>
+      <VariableTypeId>27fc86d1-8ae5-d1a4-8d06-88ee0acd318a</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>72c3fd41-1659-41fe-892e-84d222aff3f1</Id>
+      <DisplayName>Adapter Name</DisplayName>
+      <Description>Must be one of the following names
+•	Email
+•	Terminal
+•	VMware
+•	SNMP</Description>
+      <ModifiedTime>2016-03-31T19:51:32.2498217Z</ModifiedTime>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceIn</Family>
+        <ControllingItemId>88f7c866-25ba-4441-9c40-707069fb0cf6</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <ValueRequired>true</ValueRequired>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.Windows.Common.WindowsTargetConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>2097ba7b-3e94-0c5b-8243-90df2cca8626</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+  <ResumeWhenInterrupted>false</ResumeWhenInterrupted>
+  <StoreWhenCompleted>false</StoreWhenCompleted>
+  <MustStoreOnError>true</MustStoreOnError>
+</ProcessConfiguration>

@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<AdapterSettingsConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="TerminalDeviceTypeConfiguration" xml:space="preserve">
+  <Id>92973db4-8bb6-4142-9985-fa39352f48da</Id>
+  <DisplayName>Cisco IOS Device</DisplayName>
+  <Description>Generic Expect Template for Cisco IOS Device</Description>
+  <CreatedTime>2020-12-18T23:41:27.1850816Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.1850816Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <PromptExpectPattern>
+    <FormattedCode>^{0}.*&gt;</FormattedCode>
+    <References>
+      <VariableReference xsi:type="PropertyReference">
+        <DisplayPath>Target.Prompt Prefix</DisplayPath>
+        <LinkChain>
+          <Link xsi:type="PropertyNameLink">
+            <PropertyName>PromptPrefix</PropertyName>
+          </Link>
+        </LinkChain>
+        <ObjectType>Target</ObjectType>
+      </VariableReference>
+    </References>
+  </PromptExpectPattern>
+  <AdminPromptExpectPattern>
+    <FormattedCode>^{0}.*#</FormattedCode>
+    <References>
+      <VariableReference xsi:type="PropertyReference">
+        <DisplayPath>Target.Prompt Prefix</DisplayPath>
+        <LinkChain>
+          <Link xsi:type="PropertyNameLink">
+            <PropertyName>PromptPrefix</PropertyName>
+          </Link>
+        </LinkChain>
+        <ObjectType>Target</ObjectType>
+      </VariableReference>
+    </References>
+  </AdminPromptExpectPattern>
+  <ErrorExpectPattern>
+    <HardcodedValue>^[\s]*%.*</HardcodedValue>
+  </ErrorExpectPattern>
+  <HasElevatingPrivilege>true</HasElevatingPrivilege>
+  <ElevatingPrivilegeCommand>
+    <HardcodedValue>enable</HardcodedValue>
+  </ElevatingPrivilegeCommand>
+  <LoginExpectList>
+    <ExpectElementConfiguration>
+      <Name>Login Error</Name>
+      <RegularExpression>
+        <HardcodedValue>^[%\s\w]+incorrect.*$|^[%\s\w]+denied.*$|^[%\s\w]+timed out.*$|^[%\s\w]+failed.*$</HardcodedValue>
+      </RegularExpression>
+      <OperationType>Failed_Completed</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+    <ExpectElementConfiguration>
+      <Name>Login Prompt</Name>
+      <RegularExpression>
+        <HardcodedValue>^[\s]*login:|^[\s]*username:|^[\s]*login as:</HardcodedValue>
+      </RegularExpression>
+      <OperationType>RuntimeUserUserName</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+    <ExpectElementConfiguration>
+      <Name>Password Prompt</Name>
+      <RegularExpression>
+        <HardcodedValue>Password:</HardcodedValue>
+      </RegularExpression>
+      <OperationType>RuntimeUserPassword</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+    <ExpectElementConfiguration>
+      <Name>Succeeded Prompt</Name>
+      <RegularExpression>
+        <FormattedCode>{0}</FormattedCode>
+        <References>
+          <VariableReference xsi:type="PropertyReference">
+            <DisplayPath>Target.Prompt Pattern</DisplayPath>
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>GetPromptExpect</PropertyName>
+              </Link>
+            </LinkChain>
+            <ObjectType>Target</ObjectType>
+          </VariableReference>
+        </References>
+      </RegularExpression>
+      <OperationType>Succeeded</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+    <ExpectElementConfiguration>
+      <Name>Succeeded Admin Prompt</Name>
+      <RegularExpression>
+        <FormattedCode>{0}</FormattedCode>
+        <References>
+          <VariableReference xsi:type="PropertyReference">
+            <DisplayPath>Target.Admin Prompt Pattern</DisplayPath>
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>GetAdminPromptExpect</PropertyName>
+              </Link>
+            </LinkChain>
+            <ObjectType>Target</ObjectType>
+          </VariableReference>
+        </References>
+      </RegularExpression>
+      <OperationType>Succeeded</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+  </LoginExpectList>
+  <ElevatingPrivilegeExpectList>
+    <ExpectElementConfiguration>
+      <Name>Password Prompt</Name>
+      <RegularExpression>
+        <HardcodedValue>Password:</HardcodedValue>
+      </RegularExpression>
+      <OperationType>RuntimeUserAdminPassword</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+    <ExpectElementConfiguration>
+      <Name>Admin Login Error</Name>
+      <RegularExpression>
+        <HardcodedValue>^[%\s\w]+incorrect.*$|^[%\s\w]+denied.*$|^[%\s\w]+timed out.*$|^[%\s\w]+failed.*$</HardcodedValue>
+      </RegularExpression>
+      <OperationType>Failed_Completed</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+    <ExpectElementConfiguration>
+      <Name>Succeeded Admin Prompt</Name>
+      <RegularExpression>
+        <FormattedCode>{0}</FormattedCode>
+        <References>
+          <VariableReference xsi:type="PropertyReference">
+            <DisplayPath>Target.Admin Prompt Pattern</DisplayPath>
+            <LinkChain>
+              <Link xsi:type="PropertyNameLink">
+                <PropertyName>GetAdminPromptExpect</PropertyName>
+              </Link>
+            </LinkChain>
+            <ObjectType>Target</ObjectType>
+          </VariableReference>
+        </References>
+      </RegularExpression>
+      <OperationType>Succeeded</OperationType>
+      <OperationParameter xsi:type="SubstitutableString">
+        <HardcodedValue />
+      </OperationParameter>
+      <MatchCase>false</MatchCase>
+    </ExpectElementConfiguration>
+  </ElevatingPrivilegeExpectList>
+</AdapterSettingsConfiguration>

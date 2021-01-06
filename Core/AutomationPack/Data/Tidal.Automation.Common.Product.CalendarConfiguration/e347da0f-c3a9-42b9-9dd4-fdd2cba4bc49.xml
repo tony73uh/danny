@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GroupCalendarConfiguration" xml:space="preserve">
+  <Id>e347da0f-c3a9-42b9-9dd4-fdd2cba4bc49</Id>
+  <DisplayName>Holidays (US)</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.5021033Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.5021033Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <CalendarEntries>
+    <GroupCalendarEntry>
+      <CalendarId>0e668b8b-614c-48a6-8b63-ab80c875f777</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>a3c11136-4781-44d0-9d6b-92be5beb5c5e</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>f8ba2efc-ef7e-4165-ac90-b1d43bc8ec16</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>33b6a418-c91a-4898-b67b-8736507588db</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>7503d659-3114-4f67-a146-4912680b01a3</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>8664838c-7cb9-42a6-b3a3-61ba26f6565a</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>8a650712-c88d-477c-9dc4-cbacd7535f39</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>7f91fab3-9ba0-4db1-b0c7-37a3e1905e5b</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+    <GroupCalendarEntry>
+      <CalendarId>4b33b99b-c082-42d4-abb1-666e605d3d22</CalendarId>
+      <Exclude>false</Exclude>
+    </GroupCalendarEntry>
+  </CalendarEntries>
+</CalendarConfiguration>

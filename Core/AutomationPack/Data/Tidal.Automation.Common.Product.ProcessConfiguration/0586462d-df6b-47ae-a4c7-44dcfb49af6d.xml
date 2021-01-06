@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>0586462d-df6b-47ae-a4c7-44dcfb49af6d</Id>
+  <DisplayName>Self Monitoring - Monitor Service Performance Counters Thresholds</DisplayName>
+  <Description>Default process to monitor Cisco Process Orchestrator services performance metrics.</Description>
+  <CreatedTime>2020-12-18T23:41:32.4924062Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:32.4924062Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="BroadcastLoadBalancer">
+    <TargetGroupId>bc5933b4-512f-46ce-86a9-3b40331ba395</TargetGroupId>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>8a22ed27-dda1-4e21-89cd-ceae5398e8b2</WorkflowId>
+  <CategoryIds>
+    <guid>0aeadc4b-19f3-4d4e-a14b-efd72b3b7892</guid>
+  </CategoryIds>
+  <TriggerOwner>5b44380e-8162-456d-8da1-8d6638747e28</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="ScheduleDefinition">
+        <Id>cd75e2bd-72b1-4dd8-8813-e2575ef681d0</Id>
+        <DisplayName>Schedule</DisplayName>
+        <Imported>true</Imported>
+        <CalendarId>cbbf0255-b3a7-4c24-b8a4-a8129573f5a6</CalendarId>
+        <TimeOfDay>PT0S</TimeOfDay>
+        <TimeZoneId>29c480f4-f660-81e2-2655-a68cf04d91da</TimeZoneId>
+        <NumberOfRuns>48</NumberOfRuns>
+        <Interval>PT30M</Interval>
+        <SharedOwnership>true</SharedOwnership>
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>b3a7dd41-c54c-47f2-ba0b-329e1d5f5adb</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>463da554-4bf8-4b42-ae0d-7edd4e898267</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>72812118-09e3-44c8-8119-226bef06f49c</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>876f2af3-5e51-4388-9575-1420215d00da</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>772038a8-efde-4012-904c-804406307eb6</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>78b20c86-ba22-4cf5-9cae-cf6ccaf2e26d</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>21a7e9c6-f67a-41c2-8dfb-913a30e2c2b4</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>09fa2ddc-ede6-4fe4-9d45-3488c4035efc</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions>
+    <VariableConfiguration xsi:type="TableVariableConfiguration" xml:space="preserve">
+      <Id>e67d0f9b-34cf-4331-9914-ff0c0453a0c3</Id>
+      <DisplayName>Over</DisplayName>
+      <FixedSchemaDataTable>
+        <FixedSchema>
+          <Columns>
+            <TableSchemaColumn>
+              <Name>Counter</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Instance</Name>
+              <DataType>System.String</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Value</Name>
+              <DataType>System.Double</DataType>
+            </TableSchemaColumn>
+            <TableSchemaColumn>
+              <Name>Threshold</Name>
+              <DataType>System.Double</DataType>
+            </TableSchemaColumn>
+          </Columns>
+        </FixedSchema>
+      </FixedSchemaDataTable>
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>0586462d-df6b-47ae-a4c7-44dcfb49af6d</ControllingItemId>
+      </Scope>
+      <VariableTypeId>27fc86d1-8ae5-d1a4-8d06-88ee0acd318a</VariableTypeId>
+      <CustomPropertiesString />
+    </VariableConfiguration>
+    <VariableConfiguration xsi:type="StringVariableConfiguration" xml:space="preserve">
+      <Id>b1c8da86-bf37-4d2d-bd4e-85c278f882a9</Id>
+      <DisplayName>list</DisplayName>
+      <string />
+      <Scope>
+        <Family>ProcessInstanceLocal</Family>
+        <ControllingItemId>0586462d-df6b-47ae-a4c7-44dcfb49af6d</ControllingItemId>
+      </Scope>
+      <VariableTypeId>84e08004-8bba-7984-44e7-3c2dbb422f12</VariableTypeId>
+      <CustomPropertiesString />
+      <Multiline>true</Multiline>
+    </VariableConfiguration>
+  </VariableDefinitions>
+  <Notes />
+  <GeneralHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralHelp>
+  <GeneralInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </GeneralInstanceHelp>
+  <InputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputHelp>
+  <InputInstanceHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </InputInstanceHelp>
+  <OutputHelp xsi:type="CustomHelpAlias">
+    <Alias />
+  </OutputHelp>
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.Windows.Common.WindowsTargetConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>2097ba7b-3e94-0c5b-8243-90df2cca8626</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+  <ResumeWhenInterrupted>false</ResumeWhenInterrupted>
+  <SelfRouted>true</SelfRouted>
+  <StoreWhenCompleted>false</StoreWhenCompleted>
+  <MustStoreOnError>true</MustStoreOnError>
+</ProcessConfiguration>

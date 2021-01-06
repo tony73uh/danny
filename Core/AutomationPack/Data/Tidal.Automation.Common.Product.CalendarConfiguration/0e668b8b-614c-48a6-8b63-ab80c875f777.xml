@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<CalendarConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="RecurringCalendarConfiguration" xml:space="preserve">
+  <Id>0e668b8b-614c-48a6-8b63-ab80c875f777</Id>
+  <DisplayName>Christmas</DisplayName>
+  <CreatedTime>2020-12-18T23:41:27.2780849Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.2780849Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <Enabled>true</Enabled>
+  <PeriodStartDate>2008-01-01T00:00:00Z</PeriodStartDate>
+  <StartDate>2008-01-01T00:00:00Z</StartDate>
+  <EndDate>9999-12-31T00:00:00Z</EndDate>
+  <PeriodMeasure>Year</PeriodMeasure>
+  <PeriodDuration>1</PeriodDuration>
+  <Days>
+    <Last>false</Last>
+    <Offsets />
+  </Days>
+  <Weeks>
+    <Last>false</Last>
+    <Offsets />
+  </Weeks>
+  <WeekMask />
+  <Months>
+    <Last>false</Last>
+    <Offsets />
+  </Months>
+  <Quarters>
+    <Last>false</Last>
+    <Offsets />
+  </Quarters>
+  <Years>
+    <Last>false</Last>
+    <Offsets />
+  </Years>
+  <SpecificDates>
+    <DayOfMonth>
+      <Month>12</Month>
+      <Day>25</Day>
+    </DayOfMonth>
+  </SpecificDates>
+  <SpecialDates />
+</CalendarConfiguration>

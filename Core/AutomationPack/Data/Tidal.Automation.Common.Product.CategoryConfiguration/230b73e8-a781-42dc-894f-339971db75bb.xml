@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<CategoryConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>230b73e8-a781-42dc-894f-339971db75bb</Id>
+  <DisplayName>Adhoc</DisplayName>
+  <Description>Assigned to objects which can be started on ad hoc basis.</Description>
+  <CreatedTime>2020-12-18T23:41:27.6021087Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:27.6021087Z</ModifiedTime>
+  <Version>3.5.13.28</Version>
+  <SubCategories />
+</CategoryConfiguration>

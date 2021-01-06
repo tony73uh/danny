@@ -1,0 +1,3350 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>6a69c45f-2b24-468d-8053-15a10f105e54</Id>
+  <DisplayName>Self Monitoring - Collect Service Performance Counters</DisplayName>
+  <CreatedTime>2020-12-18T23:41:35.1656606Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:35.1656606Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>3018de83-8a4d-4caa-891a-652fa82b9a2c</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>616a9c8a-4691-4e3a-9afe-dbb7a3c6f8c2</Id>
+        <DisplayName>Collect Events Fired</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>f893bea6-ac40-4098-9226-c3fb2ab7f567</Id>
+            <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+            <DisplayName>If Execution Fails</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="CompletedNode">
+                <Id>b1a04071-3bd3-4ff9-b3a5-f19c66adee5c</Id>
+                <Notes>Fail the entire process</Notes>
+                <CompletedType>FailedNotCompleted</CompletedType>
+                <ResultMessage>
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>ErrorInformation</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                      <ObjectType>ActivityInstance</ObjectType>
+                    </VariableReference>
+                  </References>
+                </ResultMessage>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                  <Expression xsi:type="SubstitutableBoolean">
+                    <HardcodedValue>true</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>InstanceFailed</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>896527fa-1b68-414b-a53b-7fd2abc762d6</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+          <Id>896527fa-1b68-414b-a53b-7fd2abc762d6</Id>
+          <DisplayName>Collect Events Fired</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="OrchestratorServerLoadBalancer">
+            <TargetGroupId>bc5933b4-512f-46ce-86a9-3b40331ba395</TargetGroupId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+          <InstanceName>
+            <HardcodedValue />
+          </InstanceName>
+          <CounterName>
+            <HardcodedValue>Events Fired</HardcodedValue>
+          </CounterName>
+          <ObjectName>
+            <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+          </ObjectName>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>ad5282e2-2e41-4934-8100-28754efc83e3</Id>
+        <DisplayName>Add Events Fires to Perf Data Table</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>9c4580e1-cfb8-47c7-a3c5-cd8994f399a5</Id>
+            <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+            <DisplayName>If Execution Fails</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="CompletedNode">
+                <Id>3d72dad3-8c76-417e-8edd-594ee3c32412</Id>
+                <Notes>Fail the entire process</Notes>
+                <CompletedType>FailedNotCompleted</CompletedType>
+                <ResultMessage>
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>ErrorInformation</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                      <ObjectType>ActivityInstance</ObjectType>
+                    </VariableReference>
+                  </References>
+                </ResultMessage>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                  <Expression xsi:type="SubstitutableBoolean">
+                    <HardcodedValue>true</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>InstanceFailed</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>880befd3-6f40-4fb4-85bd-7c8387361a58</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+          <Id>880befd3-6f40-4fb4-85bd-7c8387361a58</Id>
+          <DisplayName>Add Events Fires to Perf Data Table</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+          <TableVariable>
+            <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+            <LinkChain />
+            <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </TableVariable>
+          <Values>
+            <BuiltinDataCellValue>
+              <ColumnName>Counter Name</ColumnName>
+              <Value xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Collect Events Fired.Performance Value Table.First Row.Counter Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>PerformanceCountersTable</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>FirstRow</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Counter Name</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>896527fa-1b68-414b-a53b-7fd2abc762d6</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </Value>
+            </BuiltinDataCellValue>
+            <BuiltinDataCellValue>
+              <ColumnName>Instance Name</ColumnName>
+              <Value xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Collect Events Fired.Target.Computer Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResolvedTarget</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>NetBiosName</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>896527fa-1b68-414b-a53b-7fd2abc762d6</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </Value>
+            </BuiltinDataCellValue>
+            <BuiltinDataCellValue>
+              <ColumnName>Object Name</ColumnName>
+              <Value xsi:type="SubstitutableString">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Collect Events Fired.Performance Value Table.First Row.Object Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>PerformanceCountersTable</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>FirstRow</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Object Name</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>896527fa-1b68-414b-a53b-7fd2abc762d6</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </Value>
+            </BuiltinDataCellValue>
+            <BuiltinDataCellValue>
+              <ColumnName>Value</ColumnName>
+              <Value xsi:type="SubstitutableNumber">
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Collect Events Fired.Performance Value Table.First Row.Value</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>PerformanceCountersTable</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>FirstRow</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Value</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>896527fa-1b68-414b-a53b-7fd2abc762d6</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </Value>
+            </BuiltinDataCellValue>
+          </Values>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ParallelNode">
+        <Id>9e0d7116-dfbc-4661-873f-f6a15c1cfd3e</Id>
+        <DisplayName>Parallel Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>b666239f-d9c8-4d02-b105-b6a6fd93afb7</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>0e55a4be-e5ce-495e-8ad0-90102ba3897a</Id>
+                <DisplayName>Collect Events Monitored</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>35bd1686-4821-49c6-a40b-2a89269f7f5c</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>017fb8c7-defe-4476-b259-3e30a15551dc</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>98c9e2c7-71c8-4067-bfee-5bf0b038971e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>98c9e2c7-71c8-4067-bfee-5bf0b038971e</Id>
+                  <DisplayName>Collect Events Monitored</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Events Monitored</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>d28a729c-2eb0-4877-a76b-d7b338bb4e8d</Id>
+                <DisplayName>Add Events to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>ca12fdd3-bd2e-4e83-8643-0f20cc462313</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>31a52c27-72be-4d72-8fcf-482f60cab011</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>2352d443-7468-4ab2-a16c-4fa44ea90836</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>2352d443-7468-4ab2-a16c-4fa44ea90836</Id>
+                  <DisplayName>Add Events to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Events Monitored.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>98c9e2c7-71c8-4067-bfee-5bf0b038971e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Events Monitored.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>98c9e2c7-71c8-4067-bfee-5bf0b038971e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Events Monitored.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>98c9e2c7-71c8-4067-bfee-5bf0b038971e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Events Monitored.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>98c9e2c7-71c8-4067-bfee-5bf0b038971e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>a7d42a3e-af25-4deb-9474-05c9c1db67d9</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>3e7b659e-882c-4992-9e35-831a76bbee81</Id>
+                <DisplayName>Collect In-Memory Activity Instances</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>3f4f27fd-d7fc-4d0d-a878-1f0fa9b4f25f</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>b157434c-694a-42c0-8980-b8fc2a85df8f</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>c812c684-a3e1-42cc-ac7b-0e3f704d4cdd</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>c812c684-a3e1-42cc-ac7b-0e3f704d4cdd</Id>
+                  <DisplayName>Collect In-Memory Activity Instances</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>In-Memory Activity Instances</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>b095216f-941c-49fb-aca6-d6ec4ba0f7ed</Id>
+                <DisplayName>Add In-Memory Activity Instances to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>d3dc21b1-9f32-4e51-b9d2-284371f36de4</Id>
+                    <ActivityNodeId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ActivityNodeId>
+                    <CompletedId>d27b83b5-5027-4107-861b-302c5b01694b</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>101400a7-9808-47ef-8c3d-f4c1bc67dac0</Id>
+                  <DisplayName>Add In-Memory Activity Instances to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Activity Instances.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>c812c684-a3e1-42cc-ac7b-0e3f704d4cdd</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Activity Instances.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>c812c684-a3e1-42cc-ac7b-0e3f704d4cdd</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Activity Instances.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>c812c684-a3e1-42cc-ac7b-0e3f704d4cdd</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Activity Instances.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>c812c684-a3e1-42cc-ac7b-0e3f704d4cdd</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>f937614e-d528-4576-92da-4bf03beaad8f</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>3cc6532e-48b7-4c3e-9d8b-c1bd17fb0117</Id>
+                <DisplayName>Collect In-Memory Process Instances</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>75526b02-c048-4dc3-bb5e-11d993f28731</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>7452de43-e470-4e44-902e-5ed315fe0c57</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>5cf3174e-b52a-4096-bb2e-09cf1bdb3482</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>5cf3174e-b52a-4096-bb2e-09cf1bdb3482</Id>
+                  <DisplayName>Collect In-Memory Process Instances</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>In-Memory Process Instances</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>fcb15b7d-2d87-4e30-98e6-95281c76c221</Id>
+                <DisplayName>Add In-Memory Process Instances to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>ba7c1c9a-87ed-40ab-bc6a-231174642013</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>06feea92-a370-49a2-9831-fd50d12d3e04</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>faacb377-cc94-4f9c-ba07-0d1cbf0f043d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>faacb377-cc94-4f9c-ba07-0d1cbf0f043d</Id>
+                  <DisplayName>Add In-Memory Process Instances to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Process Instances.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>5cf3174e-b52a-4096-bb2e-09cf1bdb3482</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Process Instances.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>5cf3174e-b52a-4096-bb2e-09cf1bdb3482</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Process Instances.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>5cf3174e-b52a-4096-bb2e-09cf1bdb3482</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect In-Memory Process Instances.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>5cf3174e-b52a-4096-bb2e-09cf1bdb3482</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>25e513aa-7aaa-4f39-a8bb-e943a02fbdb7</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>80d208bf-9a75-48cf-8e58-56ee717d93f8</Id>
+                <DisplayName>Collect Running Activity Instances</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>77ca666b-0f8a-4ba7-a836-cf366d1b49dc</Id>
+                    <ActivityNodeId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ActivityNodeId>
+                    <CompletedId>bacd1d82-e2b6-48a2-8759-1c1b4603e55a</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>b4993f4b-6a96-41e8-80b8-9e35a568cb58</Id>
+                  <DisplayName>Collect Running Activity Instances</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Running Activity Instances</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>7b92aaf8-3081-4c9c-b22b-96ce22fd92c8</Id>
+                <DisplayName>Add Running Activity to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>6e3e3269-35b2-4fc5-9f5d-028398859386</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>5055a0c1-2233-43f8-ba40-8354e4b85d7f</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>12abe330-c6f1-4dd3-add2-da1b5d51568c</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>12abe330-c6f1-4dd3-add2-da1b5d51568c</Id>
+                  <DisplayName>Add Running Activity to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Activity Instances.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Activity Instances.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Activity Instances.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Activity Instances.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+      <ActivityNode xsi:type="ParallelNode">
+        <Id>e150ca31-4308-4d70-95a8-29dda238167f</Id>
+        <DisplayName>Parallel Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>e69d25a4-6f2a-4df0-9982-553c7f0a37cb</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>f17c8b40-8ab1-462d-820c-8b1b7141b4ef</Id>
+                <DisplayName>Collect Running Process Instances</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>f17fb1e8-6fef-4b8b-8791-500dea844266</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>0d5f9c4c-7eb7-4d56-be0a-e3a6daacaa9c</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</Id>
+                  <DisplayName>Collect Running Process Instances</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Running Process Instances</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>3c9c6ba6-482b-4fa8-8aba-e57bf233282a</Id>
+                <DisplayName>Add Running Processes to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>6b6a8774-8cb5-454b-8ca0-6dd97097f7b0</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>069ed548-728f-4f18-ab89-9a87f1bf3383</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>6eedad96-6231-41f7-a9bb-0deee0beb4e9</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>6eedad96-6231-41f7-a9bb-0deee0beb4e9</Id>
+                  <DisplayName>Add Running Processes to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Process Instances.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Process Instances.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Process Instances.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Running Process Instances.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>458b329b-d442-4670-a77e-0eec380865bf</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>98e65f42-7432-4826-a3ae-76a56cedbfd4</Id>
+                <DisplayName>Collect Schedules Met</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>6db0a0fc-5b0d-4c5c-b459-ab96ebd73663</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>6addd4a3-c368-496a-9f54-dbc95326eaf1</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>53f70841-6730-4685-a076-6fa9cdf87ef8</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>53f70841-6730-4685-a076-6fa9cdf87ef8</Id>
+                  <DisplayName>Collect Schedules Met</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Schedules Met</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>6f3b3ef2-6293-4f55-95cd-a39560a99909</Id>
+                <DisplayName>Add Schedules Met to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>41a80592-8d56-470d-9df6-8386bd8f8419</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>9806ffdd-d5b0-45d8-b9a1-85f061ae2be8</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>bf0f4705-5eef-4ca8-bc16-9c19efc62b4a</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>bf0f4705-5eef-4ca8-bc16-9c19efc62b4a</Id>
+                  <DisplayName>Add Schedules Met to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Met.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>53f70841-6730-4685-a076-6fa9cdf87ef8</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Met.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>53f70841-6730-4685-a076-6fa9cdf87ef8</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Met.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>53f70841-6730-4685-a076-6fa9cdf87ef8</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Met.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>53f70841-6730-4685-a076-6fa9cdf87ef8</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>59118f33-4686-46fb-b43f-86111ec50ca4</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>ea854d94-d72b-4804-abfc-a05e1778c427</Id>
+                <DisplayName>Collect Schedules Monitored</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>6e0c4b3f-19cd-4f37-b5df-31d464cd8df4</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>0008edef-0695-45ca-8951-4a82f6ecb7b7</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8576d880-fccf-45ff-9cf4-70e50bae746e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>8576d880-fccf-45ff-9cf4-70e50bae746e</Id>
+                  <DisplayName>Collect Schedules Monitored</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Schedules Monitored</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>713cdf9d-5685-445d-9aab-55e07f324d18</Id>
+                <DisplayName>Add Schedules Monitored to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>e6166893-4a65-4a0d-8fa5-cb057d35b0a2</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>86eb17d6-2fbb-4a59-b33f-85425c8233f5</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>de9858bb-b24e-496c-8438-6bb1cc414d79</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>de9858bb-b24e-496c-8438-6bb1cc414d79</Id>
+                  <DisplayName>Add Schedules Monitored to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Monitored.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8576d880-fccf-45ff-9cf4-70e50bae746e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Monitored.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8576d880-fccf-45ff-9cf4-70e50bae746e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Monitored.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8576d880-fccf-45ff-9cf4-70e50bae746e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Schedules Monitored.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>8576d880-fccf-45ff-9cf4-70e50bae746e</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>6f33bfe2-8236-46ab-83a9-e44c577ada49</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>5cca75da-ad29-483d-9789-dffc555f4125</Id>
+                <DisplayName>Collect Web Service Calls</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>9319f2e0-f432-4fdc-ac8f-38a4f83944f1</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>0e69de99-ca94-4aaf-932c-bbfd3c576c7f</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b0580c75-e7bc-4bda-bbe6-9f9e1abbc772</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>b0580c75-e7bc-4bda-bbe6-9f9e1abbc772</Id>
+                  <DisplayName>Collect Web Service Calls</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue />
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Web Service Calls</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Cisco Process Orchestrator</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>aaa0dd36-2485-4d41-923b-0f94945759b9</Id>
+                <DisplayName>Add Web Service Calls to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>80185f88-494f-43ee-b5c4-3d785307eac9</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>b0b4ecd1-82b8-4e55-9cab-782240d8a295</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>f09a4606-d6b8-4518-b0ce-02ed8c18891c</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>f09a4606-d6b8-4518-b0ce-02ed8c18891c</Id>
+                  <DisplayName>Add Web Service Calls to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Web Service Calls.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b0580c75-e7bc-4bda-bbe6-9f9e1abbc772</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Web Service Calls.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b0580c75-e7bc-4bda-bbe6-9f9e1abbc772</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Web Service Calls.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b0580c75-e7bc-4bda-bbe6-9f9e1abbc772</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Web Service Calls.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>b0580c75-e7bc-4bda-bbe6-9f9e1abbc772</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+      <ActivityNode xsi:type="ParallelNode">
+        <Id>cd92f3e8-1883-410d-87c7-1d27b7e5bc91</Id>
+        <DisplayName>Parallel Block</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>c5193914-e511-4262-92a5-c9471ca517d9</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>88b5fbe2-2633-4de3-8ec0-e1369ce62e1c</Id>
+                <DisplayName>Collect Service Process Private Bytes</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>4434f3d1-9700-4d5f-b92a-38c0e3aa0825</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>c12ca4e4-1e73-4b02-b0f9-e51fd2d0ea82</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>a626ec69-8138-4c2d-bad5-4ab00d3e1bae</Id>
+                  <DisplayName>Collect Service Process Private Bytes</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue>Tidal.Automation.Server</HardcodedValue>
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Private Bytes</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Process</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>2fac1642-d330-438e-ad93-a0f0992deed3</Id>
+                <DisplayName>Add Service Process Private Bytes to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>3f998b5d-89a4-4c69-81be-68b1176c486d</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>5e64371c-669d-4ef0-a2a5-1eff1b1349c7</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>6eedad96-6231-41f7-a9bb-0deee0beb4e9</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>acaced03-1575-4302-9afa-74c1aa042638</Id>
+                  <DisplayName>Add Service Process Private Bytes to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Private Bytes.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>a626ec69-8138-4c2d-bad5-4ab00d3e1bae</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}\{1}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Private Bytes.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>a626ec69-8138-4c2d-bad5-4ab00d3e1bae</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Private Bytes.Performance Value Table.First Row.Instance Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Instance Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>a626ec69-8138-4c2d-bad5-4ab00d3e1bae</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Private Bytes.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>a626ec69-8138-4c2d-bad5-4ab00d3e1bae</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Private Bytes.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>a626ec69-8138-4c2d-bad5-4ab00d3e1bae</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>5a835b30-3aa8-424d-bda6-6139795259aa</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>7e8f53c7-6c0b-4503-9f80-d7da943dc4e4</Id>
+                <DisplayName>Collect Service Process Handle Count</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>ba17f892-48c1-4d0e-bee7-91482777e94e</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>c82251e2-c1d7-41d8-9412-e46f3210da8e</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>dc37e551-2318-4e94-b0ca-7bcc9d67e8ce</Id>
+                  <DisplayName>Collect Service Process Handle Count</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue>Tidal.Automation.Server</HardcodedValue>
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Handle Count</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Process</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>131e8f9b-9bb7-4ce6-93e4-656b655f9c8d</Id>
+                <DisplayName>Add Service Process Handle Count to Perf Data Table</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>5d89e890-3c11-4ce7-93e3-c2df2601252c</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>f95cfba9-0206-41a7-ba1f-255ffe1340a0</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>bf0f4705-5eef-4ca8-bc16-9c19efc62b4a</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                  <Id>4c7bd885-49fe-4f6d-9689-72cc7c1a6cd9</Id>
+                  <DisplayName>Add Service Process Handle Count to Perf Data Table</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <TableVariable>
+                    <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                    <LinkChain />
+                    <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                    <ObjectType>GlobalVariable</ObjectType>
+                  </TableVariable>
+                  <Values>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Counter Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Handle Count.Performance Value Table.First Row.Counter Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Counter Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>dc37e551-2318-4e94-b0ca-7bcc9d67e8ce</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Instance Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}\{1}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Handle Count.Target.Computer Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>ResolvedTarget</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>NetBiosName</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>dc37e551-2318-4e94-b0ca-7bcc9d67e8ce</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Handle Count.Performance Value Table.First Row.Instance Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Instance Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>dc37e551-2318-4e94-b0ca-7bcc9d67e8ce</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Object Name</ColumnName>
+                      <Value xsi:type="SubstitutableString">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Handle Count.Performance Value Table.First Row.Object Name</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Object Name</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>dc37e551-2318-4e94-b0ca-7bcc9d67e8ce</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                    <BuiltinDataCellValue>
+                      <ColumnName>Value</ColumnName>
+                      <Value xsi:type="SubstitutableNumber">
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Collect Service Process Handle Count.Performance Value Table.First Row.Value</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>PerformanceCountersTable</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstRow</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Value</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>dc37e551-2318-4e94-b0ca-7bcc9d67e8ce</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Value>
+                    </BuiltinDataCellValue>
+                  </Values>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>17d4be90-8cc1-4991-ae90-c2a2c7e3cf43</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>010aa4f3-1f1b-46f1-bc09-3335ab022905</Id>
+                <DisplayName>Collect External Processes Private Bytes</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>ccb4bd0c-6d8e-4a94-ba8e-2cd811b77927</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>8967b91d-94c2-4587-99f9-9f078efee6f9</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>9de0232f-9cc5-4bf9-a4f9-c1403def24e1</Id>
+                  <DisplayName>Collect External Processes Private Bytes</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue>Tidal.Automation.Server.External*</HardcodedValue>
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Private Bytes</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Process</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>3b223f6f-1309-4f24-a07a-a34c18e30765</Id>
+                <DisplayName>For Each External Process</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>a438e688-dab9-4d57-bfc0-447286c41746</Id>
+                    <DisplayName>Add External Processes Private Bytes to Perf Data Table</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ConditionBranchNode">
+                        <Id>bf4586cd-d86f-40e4-bacd-848e69d0a79c</Id>
+                        <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                        <DisplayName>If Execution Fails</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="CompletedNode">
+                            <Id>0c46d149-d3f0-4022-8cce-603e655cf863</Id>
+                            <Notes>Fail the entire process</Notes>
+                            <CompletedType>FailedNotCompleted</CompletedType>
+                            <ResultMessage>
+                              <FormattedCode>{0}</FormattedCode>
+                              <References>
+                                <VariableReference xsi:type="PropertyReference">
+                                  <LinkChain>
+                                    <Link xsi:type="PropertyNameLink">
+                                      <PropertyName>ErrorInformation</PropertyName>
+                                    </Link>
+                                  </LinkChain>
+                                  <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                                  <ObjectType>ActivityInstance</ObjectType>
+                                </VariableReference>
+                              </References>
+                            </ResultMessage>
+                          </ActivityNode>
+                        </Children>
+                        <Condition>
+                          <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                          <Conditions>
+                            <ConditionDefinition xsi:type="VariableConditionDefinition">
+                              <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                              <Expression xsi:type="SubstitutableBoolean">
+                                <HardcodedValue>true</HardcodedValue>
+                              </Expression>
+                              <Comparison>Equals</Comparison>
+                              <VariableReference xsi:type="PropertyReference">
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>InstanceFailed</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>de9858bb-b24e-496c-8438-6bb1cc414d79</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </ConditionDefinition>
+                          </Conditions>
+                        </Condition>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                      <Id>484d4d28-1bf3-4930-8b57-2f3ff62b7f6d</Id>
+                      <DisplayName>Add External Processes Private Bytes to Perf Data Table</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                      <TableVariable>
+                        <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </TableVariable>
+                      <Values>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Counter Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Counter Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Counter Name</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>3b223f6f-1309-4f24-a07a-a34c18e30765</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Instance Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}\{1}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.Collect External Processes Private Bytes.Target.Computer Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>ResolvedTarget</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>NetBiosName</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>9de0232f-9cc5-4bf9-a4f9-c1403def24e1</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Instance Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Instance Name</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>3b223f6f-1309-4f24-a07a-a34c18e30765</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Object Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Object Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Object Name</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>3b223f6f-1309-4f24-a07a-a34c18e30765</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Value</ColumnName>
+                          <Value xsi:type="SubstitutableNumber">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Value</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Value</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>3b223f6f-1309-4f24-a07a-a34c18e30765</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                      </Values>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Workflow.Collect External Processes Private Bytes.Performance Value Table.Rows</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>PerformanceCountersTable</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>TIARows</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>9de0232f-9cc5-4bf9-a4f9-c1403def24e1</ObjectId>
+                  <ObjectType>ActivityInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+          <ActivityNode xsi:type="SequenceNode">
+            <Id>a9671d21-7b69-4fb3-9c02-4b22df74adbd</Id>
+            <DisplayName>Sequential Block</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>ebb5c163-118f-4445-baa8-f78c24f0135f</Id>
+                <DisplayName>Collect External Processes Handle Count</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ConditionBranchNode">
+                    <Id>a46a5021-29f0-4b12-82f9-1992f9e22368</Id>
+                    <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                    <DisplayName>If Execution Fails</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="CompletedNode">
+                        <Id>11ffe079-e326-4b55-a964-c815f4dae848</Id>
+                        <Notes>Fail the entire process</Notes>
+                        <CompletedType>FailedNotCompleted</CompletedType>
+                        <ResultMessage>
+                          <FormattedCode>{0}</FormattedCode>
+                          <References>
+                            <VariableReference xsi:type="PropertyReference">
+                              <LinkChain>
+                                <Link xsi:type="PropertyNameLink">
+                                  <PropertyName>ErrorInformation</PropertyName>
+                                </Link>
+                              </LinkChain>
+                              <ObjectId>b4993f4b-6a96-41e8-80b8-9e35a568cb58</ObjectId>
+                              <ObjectType>ActivityInstance</ObjectType>
+                            </VariableReference>
+                          </References>
+                        </ResultMessage>
+                      </ActivityNode>
+                    </Children>
+                    <Condition>
+                      <Id>5928b4c2-f9d5-40dc-85f2-211f668760bd</Id>
+                      <Conditions>
+                        <ConditionDefinition xsi:type="VariableConditionDefinition">
+                          <Id>42aea6ab-80ec-4f31-a697-f1230aec846f</Id>
+                          <Expression xsi:type="SubstitutableBoolean">
+                            <HardcodedValue>true</HardcodedValue>
+                          </Expression>
+                          <Comparison>Equals</Comparison>
+                          <VariableReference xsi:type="PropertyReference">
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>InstanceFailed</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>3a81b1de-c879-4a65-a8b3-0d5a4bc3b88d</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </ConditionDefinition>
+                      </Conditions>
+                    </Condition>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="WindowsReadPerformanceCounterActivityConfiguration" xml:space="preserve">
+                  <Id>be41f78d-ce7c-45c7-a61d-0bfe32fa0d98</Id>
+                  <DisplayName>Collect External Processes Handle Count</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+                    <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+                    <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                  <InstanceName>
+                    <HardcodedValue>Tidal.Automation.Server.External*</HardcodedValue>
+                  </InstanceName>
+                  <CounterName>
+                    <HardcodedValue>Handle Count</HardcodedValue>
+                  </CounterName>
+                  <ObjectName>
+                    <HardcodedValue>Process</HardcodedValue>
+                  </ObjectName>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>c460db5a-ff70-44b1-91fb-9ded17363c38</Id>
+                <DisplayName>For Each External Process</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>8c45c415-fb61-4ee2-b1c2-68fc2c57ae3a</Id>
+                    <DisplayName>Add External Processes Handle Count to Perf Data Table</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="ConditionBranchNode">
+                        <Id>3d34e8ec-3e21-493c-922b-b0a437d9bc2f</Id>
+                        <Notes>If this execution fails, execute the contained workflow nodes.</Notes>
+                        <DisplayName>If Execution Fails</DisplayName>
+                        <Children>
+                          <ActivityNode xsi:type="CompletedNode">
+                            <Id>8ba08c86-be0e-4767-b948-47c9aa820138</Id>
+                            <Notes>Fail the entire process</Notes>
+                            <CompletedType>FailedNotCompleted</CompletedType>
+                            <ResultMessage>
+                              <FormattedCode>{0}</FormattedCode>
+                              <References>
+                                <VariableReference xsi:type="PropertyReference">
+                                  <LinkChain>
+                                    <Link xsi:type="PropertyNameLink">
+                                      <PropertyName>ErrorInformation</PropertyName>
+                                    </Link>
+                                  </LinkChain>
+                                  <ObjectId>101400a7-9808-47ef-8c3d-f4c1bc67dac0</ObjectId>
+                                  <ObjectType>ActivityInstance</ObjectType>
+                                </VariableReference>
+                              </References>
+                            </ResultMessage>
+                          </ActivityNode>
+                        </Children>
+                        <Condition>
+                          <Id>f53e0024-913f-4530-8553-f6b4e4575ccf</Id>
+                          <Conditions>
+                            <ConditionDefinition xsi:type="VariableConditionDefinition">
+                              <Id>39dad862-fe03-4f71-9253-8010ac57ce55</Id>
+                              <Expression xsi:type="SubstitutableBoolean">
+                                <HardcodedValue>true</HardcodedValue>
+                              </Expression>
+                              <Comparison>Equals</Comparison>
+                              <VariableReference xsi:type="PropertyReference">
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>InstanceFailed</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>f09a4606-d6b8-4518-b0ce-02ed8c18891c</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </ConditionDefinition>
+                          </Conditions>
+                        </Condition>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="AddTableRowActivityConfiguration" xml:space="preserve">
+                      <Id>90dcb31e-6f2d-4fcb-b2a9-56e662ffaf6e</Id>
+                      <DisplayName>Add External Processes Handle Count to Perf Data Table</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+                      <TableVariable>
+                        <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+                        <LinkChain />
+                        <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+                        <ObjectType>GlobalVariable</ObjectType>
+                      </TableVariable>
+                      <Values>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Counter Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Counter Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Counter Name</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>c460db5a-ff70-44b1-91fb-9ded17363c38</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Instance Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}\{1}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.Collect External Processes Handle Count.Target.Computer Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>ResolvedTarget</PropertyName>
+                                  </Link>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>NetBiosName</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>be41f78d-ce7c-45c7-a61d-0bfe32fa0d98</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Instance Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Instance Name</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>c460db5a-ff70-44b1-91fb-9ded17363c38</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Object Name</ColumnName>
+                          <Value xsi:type="SubstitutableString">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Object Name</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Object Name</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>c460db5a-ff70-44b1-91fb-9ded17363c38</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                        <BuiltinDataCellValue>
+                          <ColumnName>Value</ColumnName>
+                          <Value xsi:type="SubstitutableNumber">
+                            <FormattedCode>{0}</FormattedCode>
+                            <References>
+                              <VariableReference xsi:type="PropertyReference">
+                                <DisplayPath>Workflow.For Each External Process.Item.Value</DisplayPath>
+                                <LinkChain>
+                                  <Link xsi:type="PropertyNameLink">
+                                    <PropertyName>Value</PropertyName>
+                                  </Link>
+                                </LinkChain>
+                                <ObjectId>c460db5a-ff70-44b1-91fb-9ded17363c38</ObjectId>
+                                <ObjectType>ActivityInstance</ObjectType>
+                              </VariableReference>
+                            </References>
+                          </Value>
+                        </BuiltinDataCellValue>
+                      </Values>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Workflow.Collect External Processes Handle Count.Performance Value Table.Rows</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>PerformanceCountersTable</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>TIARows</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>be41f78d-ce7c-45c7-a61d-0bfe32fa0d98</ObjectId>
+                  <ObjectType>ActivityInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>b1a0a8f7-3d53-4601-9660-69322fe934b5</Id>
+        <DisplayName>Insert Multiple Metrics</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>6441fe0a-ac89-4573-95f0-0c76ace71368</Id>
+            <ActivityNodeId>5352541a-81d4-492a-9d55-83bad44e0184</ActivityNodeId>
+            <CompletedId>b5825e57-b58e-4c31-b103-b81572e2f3c8</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="InsertPerformanceMetricsActivityConfiguration" xml:space="preserve">
+          <Id>5352541a-81d4-492a-9d55-83bad44e0184</Id>
+          <DisplayName>Insert Multiple Metrics</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ContainingProcessId>
+          <TableSource xsi:type="PropertyReference">
+            <DisplayPath>Process.Variables.Local.Performance Data</DisplayPath>
+            <LinkChain />
+            <ObjectId>978cac04-2790-4a2e-ab16-efdfcc97c8f5</ObjectId>
+            <ObjectType>GlobalVariable</ObjectType>
+          </TableSource>
+          <AffectedTargetLoadBalancer xsi:type="ActivityTargetLoadBalancer">
+            <ActivityId>896527fa-1b68-414b-a53b-7fd2abc762d6</ActivityId>
+            <ChildProcessNodeId>00000000-0000-0000-0000-000000000000</ChildProcessNodeId>
+          </AffectedTargetLoadBalancer>
+          <ConfigurationItemIsCMDBReference>false</ConfigurationItemIsCMDBReference>
+          <Object>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Object Name</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Object Name</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>5352541a-81d4-492a-9d55-83bad44e0184</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Object>
+          <Counter>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Counter Name</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Counter Name</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>5352541a-81d4-492a-9d55-83bad44e0184</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Counter>
+          <Value>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Value</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Value</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>5352541a-81d4-492a-9d55-83bad44e0184</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Value>
+          <Instance>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Insert Multiple Metrics.Columns.Instance Name</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>CurrentRow</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Instance Name</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>5352541a-81d4-492a-9d55-83bad44e0184</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </Instance>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>20ccd44c-321f-4f72-b067-7a5047c8f949</ProcessId>
+</WorkflowConfiguration>

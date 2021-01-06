@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>b927214b-d8d8-4b60-8f80-9b9b0225c132</Id>
+  <DisplayName>Self Monitoring - Server Health</DisplayName>
+  <CreatedTime>2020-12-18T23:41:37.6426734Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:37.6426734Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>c73eb694-1db6-4aab-89d5-b569d46573ea</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>a8f87ce1-2378-4f91-ac09-02d30eebf240</Id>
+        <DisplayName>Find Targets</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>384e7155-a91f-4872-be45-537616b921d4</Id>
+            <ActivityNodeId>a8f87ce1-2378-4f91-ac09-02d30eebf240</ActivityNodeId>
+            <CompletedId>940567b3-4988-408c-aa48-44b77e874950</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="BuiltinFindTargetsActivityConfiguration" xml:space="preserve">
+          <Id>a8f87ce1-2378-4f91-ac09-02d30eebf240</Id>
+          <DisplayName>Find Targets</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>390bca6e-236e-4606-bbe8-b47a1704e1eb</ContainingProcessId>
+          <TargetTypeName>Tidal.Automation.Windows.Common.WindowsTargetConfiguration, Tidal.Automation.Windows.Common</TargetTypeName>
+          <TargetTypeExtensionId>2097ba7b-3e94-0c5b-8243-90df2cca8626</TargetTypeExtensionId>
+          <TargetGroupId>bc5933b4-512f-46ce-86a9-3b40331ba395</TargetGroupId>
+          <MatchingCriteria>
+            <GenericCriteria xsi:type="StringCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>NetBiosName</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingString>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Orchestrator Server Unhealthy Event.Insertion String 1</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>InsertionString01</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </MatchingString>
+              <Comparison>Equals</Comparison>
+            </GenericCriteria>
+          </MatchingCriteria>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="SwitchNode">
+        <Id>56e073d5-e3a6-48a0-adb8-b3d2dc999701</Id>
+        <DisplayName>Server Status?</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>72600a90-479f-464d-b61e-fba9a1d1febb</Id>
+            <DisplayName>Up</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>bddb8bec-3d2b-4cd7-94c6-1795f79a9f5a</Id>
+                <DisplayName>Find Server Unhealthy Alerts</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>a891754a-ef9a-4c94-b14d-c369cbf28fbd</Id>
+                    <ActivityNodeId>bddb8bec-3d2b-4cd7-94c6-1795f79a9f5a</ActivityNodeId>
+                    <CompletedId>a320b72e-54ad-44cf-af18-3d4d763641c2</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="FindAlertsActivityConfiguration" xml:space="preserve">
+                  <Id>bddb8bec-3d2b-4cd7-94c6-1795f79a9f5a</Id>
+                  <DisplayName>Find Server Unhealthy Alerts</DisplayName>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>390bca6e-236e-4606-bbe8-b47a1704e1eb</ContainingProcessId>
+                  <CreatedTimePeriod>
+                    <DisplayUnits>Days</DisplayUnits>
+                    <Period>
+                      <FormattedCode>{0}</FormattedCode>
+                      <References>
+                        <VariableReference xsi:type="PropertyReference">
+                          <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                          <LinkChain>
+                            <Link xsi:type="PropertyNameLink">
+                              <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                            </Link>
+                          </LinkChain>
+                          <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                          <ObjectType>Adapter</ObjectType>
+                        </VariableReference>
+                      </References>
+                    </Period>
+                  </CreatedTimePeriod>
+                  <MatchingCriteria>
+                    <GenericCriteria xsi:type="NumberCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>AlertClass</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingNumber>
+                        <HardcodedValue>1053</HardcodedValue>
+                      </MatchingNumber>
+                      <Comparison>Equals</Comparison>
+                    </GenericCriteria>
+                    <GenericCriteria xsi:type="BooleanCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Canceled</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingBoolean>
+                        <HardcodedValue>false</HardcodedValue>
+                      </MatchingBoolean>
+                    </GenericCriteria>
+                    <GenericCriteria xsi:type="BooleanCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Closed</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingBoolean>
+                        <HardcodedValue>false</HardcodedValue>
+                      </MatchingBoolean>
+                    </GenericCriteria>
+                    <GenericCriteria xsi:type="BooleanCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Resolved</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingBoolean>
+                        <HardcodedValue>false</HardcodedValue>
+                      </MatchingBoolean>
+                    </GenericCriteria>
+                    <GenericCriteria xsi:type="BooleanCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Duplicate</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingBoolean>
+                        <HardcodedValue>false</HardcodedValue>
+                      </MatchingBoolean>
+                    </GenericCriteria>
+                    <GenericCriteria xsi:type="GuidCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>AffectedTargetReference</PropertyName>
+                        </Link>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>GetReferencedObject</PropertyName>
+                        </Link>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Id</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingGuid>
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.Find Targets.Found Targets.First.Target Id</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>GetAllFoundTargets</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>FirstItem</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>GetReferencedObject</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Id</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>a8f87ce1-2378-4f91-ac09-02d30eebf240</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </MatchingGuid>
+                      <Comparison>Equals</Comparison>
+                    </GenericCriteria>
+                  </MatchingCriteria>
+                  <MatchingStatus>NotCompleted</MatchingStatus>
+                </Configuration>
+              </ActivityNode>
+              <ActivityNode xsi:type="ForEachNode">
+                <Id>a3a44665-3837-4ef3-bffb-08e04794f1e3</Id>
+                <DisplayName>For Each Server Unhealthy Alert</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="ExecuteActivityNode">
+                    <Id>c0659ea1-7f95-4855-85ed-820194cc60b8</Id>
+                    <DisplayName>Resolve Server Unhealthy Alert</DisplayName>
+                    <Children>
+                      <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                        <Id>0f68c5ca-604c-47e6-9f52-35d75788a162</Id>
+                        <ActivityNodeId>c0659ea1-7f95-4855-85ed-820194cc60b8</ActivityNodeId>
+                        <CompletedId>e481dc01-604d-41be-b61d-54a3e91e2965</CompletedId>
+                      </ActivityNode>
+                    </Children>
+                    <Configuration xsi:type="UpdateAlertActivityConfiguration" xml:space="preserve">
+                      <Id>c0659ea1-7f95-4855-85ed-820194cc60b8</Id>
+                      <DisplayName>Resolve Server Unhealthy Alert</DisplayName>
+                      <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                        <SingleTargetId>
+                          <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                        </SingleTargetId>
+                      </TargetLoadBalancer>
+                      <InheritTarget>false</InheritTarget>
+                      <ContainingProcessId>390bca6e-236e-4606-bbe8-b47a1704e1eb</ContainingProcessId>
+                      <TaskId>
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Workflow.For Each Server Unhealthy Alert.Item.Task Id</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>GetReferencedObject</PropertyName>
+                              </Link>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Id</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectId>a3a44665-3837-4ef3-bffb-08e04794f1e3</ObjectId>
+                            <ObjectType>ActivityInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </TaskId>
+                      <ModificationGroup>
+                        <ObjectId>00000000-0000-0000-0000-000000000000</ObjectId>
+                        <ObjectType>Task</ObjectType>
+                        <Modifications>
+                          <PropertyModification>
+                            <DisplayPath>Task Status.Resolved</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Resolved</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <Action>Set</Action>
+                            <Value xsi:type="SubstitutableBoolean">
+                              <HardcodedValue>true</HardcodedValue>
+                            </Value>
+                          </PropertyModification>
+                        </Modifications>
+                      </ModificationGroup>
+                    </Configuration>
+                  </ActivityNode>
+                </Children>
+                <ForEachSource xsi:type="PropertyReference">
+                  <DisplayPath>Workflow.Find Server Unhealthy Alerts.Found Tasks.Items</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>GetAllFoundTasks</PropertyName>
+                    </Link>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>Items</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>bddb8bec-3d2b-4cd7-94c6-1795f79a9f5a</ObjectId>
+                  <ObjectType>ActivityInstance</ObjectType>
+                </ForEachSource>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>dcce3d95-0912-422e-88e4-36f53f6d7da7</Id>
+              <Conditions>
+                <ConditionDefinition xsi:type="VariableConditionDefinition">
+                  <Id>d8d1e8ec-f2a8-4807-8f6e-6ff738fb8874</Id>
+                  <Expression xsi:type="SubstitutableNumber">
+                    <HardcodedValue>1054</HardcodedValue>
+                  </Expression>
+                  <Comparison>Equals</Comparison>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Orchestrator Server Health Event.Event Number</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>EventNumber</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </ConditionDefinition>
+              </Conditions>
+            </Condition>
+          </ActivityNode>
+          <ActivityNode xsi:type="ConditionBranchNode">
+            <Id>d8fc1a86-05c6-48b4-913b-774f85528daa</Id>
+            <DisplayName>Down</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="ExecuteActivityNode">
+                <Id>c9518002-cfb9-4996-b620-de8757fbad6a</Id>
+                <DisplayName>Server Health Warning</DisplayName>
+                <Children>
+                  <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                    <Id>f5a739a9-7e8f-41fa-b337-a3dd00e5a73c</Id>
+                    <ActivityNodeId>c9518002-cfb9-4996-b620-de8757fbad6a</ActivityNodeId>
+                    <CompletedId>f41f587a-0170-4e07-b6c8-f79f6673793b</CompletedId>
+                  </ActivityNode>
+                </Children>
+                <Configuration xsi:type="AlertActivityConfiguration" xml:space="preserve">
+                  <Id>c9518002-cfb9-4996-b620-de8757fbad6a</Id>
+                  <DisplayName>Server Health Warning</DisplayName>
+                  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                    <FormattedCode />
+                    <HardcodedValue>
+                      <Id>00000000-0000-0000-0000-000000000000</Id>
+                      <ObjectType>RuntimeUser</ObjectType>
+                    </HardcodedValue>
+                  </RuntimeUserObject>
+                  <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                    <SingleTargetId>
+                      <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                    </SingleTargetId>
+                  </TargetLoadBalancer>
+                  <InheritTarget>false</InheritTarget>
+                  <ContainingProcessId>390bca6e-236e-4606-bbe8-b47a1704e1eb</ContainingProcessId>
+                  <TaskExpiresPeriod>
+                    <DisplayUnits>Days</DisplayUnits>
+                    <Period>
+                      <FormattedCode>{0}</FormattedCode>
+                      <References>
+                        <VariableReference xsi:type="PropertyReference">
+                          <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                          <LinkChain>
+                            <Link xsi:type="PropertyNameLink">
+                              <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                            </Link>
+                          </LinkChain>
+                          <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                          <ObjectType>Adapter</ObjectType>
+                        </VariableReference>
+                      </References>
+                    </Period>
+                  </TaskExpiresPeriod>
+                  <TaskAssignees />
+                  <TaskPriority>Medium</TaskPriority>
+                  <TaskBlock>false</TaskBlock>
+                  <TaskXslFileName>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Adapters.Core Functions Adapter.Default Alert Task Transform</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>DefaultAlertTaskTransform</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                        <ObjectType>Adapter</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </TaskXslFileName>
+                  <TaskName>
+                    <HardcodedValue>Server Health Warning</HardcodedValue>
+                  </TaskName>
+                  <TaskDescription>
+                    <FormattedCode>{0}
+{1}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Triggers.Orchestrator Server Health Event.Event Description</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Description</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectType>EventInstance</ObjectType>
+                      </VariableReference>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Triggers.Orchestrator Server Health Event.Insertion String 1</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>InsertionString01</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectType>EventInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </TaskDescription>
+                  <TaskCategoryIds />
+                  <TaskInheritCategories>true</TaskInheritCategories>
+                  <TaskRelatedIds />
+                  <ExternalSystem>
+                    <HardcodedValue />
+                  </ExternalSystem>
+                  <ExternalId>
+                    <HardcodedValue />
+                  </ExternalId>
+                  <TaskOwner>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Target.Owner</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>ResolvedTarget</PropertyName>
+                          </Link>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>Owner</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectType>ProcessInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </TaskOwner>
+                  <TaskParameters>
+                    <NamedSubstitutableParameter>
+                      <DisplayName>Parameter 1:</DisplayName>
+                      <Parameter>
+                        <FormattedCode>{0}</FormattedCode>
+                        <References>
+                          <VariableReference xsi:type="PropertyReference">
+                            <DisplayPath>Process.Triggers.Orchestrator Server Health Event.Category</DisplayPath>
+                            <LinkChain>
+                              <Link xsi:type="PropertyNameLink">
+                                <PropertyName>Category</PropertyName>
+                              </Link>
+                            </LinkChain>
+                            <ObjectType>EventInstance</ObjectType>
+                          </VariableReference>
+                        </References>
+                      </Parameter>
+                    </NamedSubstitutableParameter>
+                  </TaskParameters>
+                  <AffectedServices>
+                    <HardcodedValue />
+                  </AffectedServices>
+                  <AffectedOrganizations>
+                    <HardcodedValue />
+                  </AffectedOrganizations>
+                  <AffectedTargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+                    <SingleTargetReference>
+                      <FormattedCode>{0}</FormattedCode>
+                      <References>
+                        <VariableReference xsi:type="PropertyReference">
+                          <DisplayPath>Workflow.Find Targets.Found Targets.First</DisplayPath>
+                          <LinkChain>
+                            <Link xsi:type="PropertyNameLink">
+                              <PropertyName>GetAllFoundTargets</PropertyName>
+                            </Link>
+                            <Link xsi:type="PropertyNameLink">
+                              <PropertyName>FirstItem</PropertyName>
+                            </Link>
+                          </LinkChain>
+                          <ObjectId>a8f87ce1-2378-4f91-ac09-02d30eebf240</ObjectId>
+                          <ObjectType>ActivityInstance</ObjectType>
+                        </VariableReference>
+                      </References>
+                    </SingleTargetReference>
+                  </AffectedTargetLoadBalancer>
+                  <DiagnosticReportConfiguration>
+                    <ReportStylesheet>SituationReport.xsl</ReportStylesheet>
+                    <Formats>
+                      <DiagnosticReportFormatEntry>
+                        <Id>6d8ea657-4abc-4da0-a5a6-5bc755e4f63d</Id>
+                        <Format xsi:type="SituationReportFormat">
+                          <Problem>true</Problem>
+                          <Section>SituationAnalysis</Section>
+                        </Format>
+                      </DiagnosticReportFormatEntry>
+                      <DiagnosticReportFormatEntry>
+                        <Id>c9518002-cfb9-4996-b620-de8757fbad6a</Id>
+                        <Format xsi:type="SituationReportFormat">
+                          <Section>SituationAnalysis</Section>
+                        </Format>
+                      </DiagnosticReportFormatEntry>
+                    </Formats>
+                  </DiagnosticReportConfiguration>
+                  <AlertClass>
+                    <FormattedCode>{0}</FormattedCode>
+                    <References>
+                      <VariableReference xsi:type="PropertyReference">
+                        <DisplayPath>Process.Triggers.Orchestrator Server Health Event.Event Number</DisplayPath>
+                        <LinkChain>
+                          <Link xsi:type="PropertyNameLink">
+                            <PropertyName>EventNumber</PropertyName>
+                          </Link>
+                        </LinkChain>
+                        <ObjectType>EventInstance</ObjectType>
+                      </VariableReference>
+                    </References>
+                  </AlertClass>
+                  <MatchingCriteria>
+                    <GenericCriteria xsi:type="AlertMatchingNumberCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>AlertClass</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingNumber>
+                        <HardcodedValue>0</HardcodedValue>
+                      </MatchingNumber>
+                      <Comparison>Equals</Comparison>
+                      <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+                    </GenericCriteria>
+                    <GenericCriteria xsi:type="AlertMatchingStringCriteria">
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Parameter1</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <MatchingString>
+                        <HardcodedValue>*</HardcodedValue>
+                      </MatchingString>
+                      <Comparison>Equals</Comparison>
+                      <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+                    </GenericCriteria>
+                  </MatchingCriteria>
+                  <MatchingTimePeriod>
+                    <DisplayUnits>Minutes</DisplayUnits>
+                    <Period>
+                      <HardcodedValue>1</HardcodedValue>
+                    </Period>
+                  </MatchingTimePeriod>
+                </Configuration>
+              </ActivityNode>
+            </Children>
+            <Condition>
+              <Id>7f736b83-4925-4658-ba97-fc5c4588aa0e</Id>
+              <Conditions />
+            </Condition>
+          </ActivityNode>
+        </Children>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>390bca6e-236e-4606-bbe8-b47a1704e1eb</ProcessId>
+</WorkflowConfiguration>

@@ -1,0 +1,465 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>40a8f9d1-98a7-452d-b4f9-e0f1dc4752a0</Id>
+  <DisplayName>Self Monitoring - Report Database Connection Error</DisplayName>
+  <CreatedTime>2020-12-18T23:41:40.9319081Z</CreatedTime>
+  <ModifiedTime>2020-12-18T23:41:40.9319081Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>a4ba57be-143f-44c3-893f-5a56770fc757</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>78e01c0a-c223-4dde-9632-d5932c8b06ff</Id>
+        <DisplayName>Reporting Database Connection Error</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>0af2e5e8-3eb0-4b18-8a08-d1c032a0227c</Id>
+            <ActivityNodeId>7a32e31c-3c41-4a79-b11a-90ccfb974015</ActivityNodeId>
+            <CompletedId>1c94f1a4-e6d7-4606-bb88-577253bc916e</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="AlertActivityConfiguration" xml:space="preserve">
+          <Id>7a32e31c-3c41-4a79-b11a-90ccfb974015</Id>
+          <DisplayName>Reporting Database Connection Error</DisplayName>
+          <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+            <FormattedCode />
+            <HardcodedValue>
+              <Id>00000000-0000-0000-0000-000000000000</Id>
+              <ObjectType>RuntimeUser</ObjectType>
+            </HardcodedValue>
+          </RuntimeUserObject>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>dc74209e-908b-4619-ba72-a225a13d2215</ContainingProcessId>
+          <TaskExpiresPeriod>
+            <DisplayUnits>Days</DisplayUnits>
+            <Period>
+              <FormattedCode>{0}</FormattedCode>
+              <References>
+                <VariableReference xsi:type="PropertyReference">
+                  <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                  <LinkChain>
+                    <Link xsi:type="PropertyNameLink">
+                      <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                    </Link>
+                  </LinkChain>
+                  <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                  <ObjectType>Adapter</ObjectType>
+                </VariableReference>
+              </References>
+            </Period>
+          </TaskExpiresPeriod>
+          <TaskAssignees />
+          <TaskPriority>Medium</TaskPriority>
+          <TaskBlock>false</TaskBlock>
+          <TaskXslFileName>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Adapters.Core Functions Adapter.Default Alert Task Transform</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>DefaultAlertTaskTransform</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                <ObjectType>Adapter</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskXslFileName>
+          <TaskName>
+            <HardcodedValue>Cisco Process Orchestrator Reporting Database Connection Error</HardcodedValue>
+          </TaskName>
+          <TaskDescription>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Triggers.Windows Event.Event Description</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Description</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>EventInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskDescription>
+          <TaskCategoryIds />
+          <TaskInheritCategories>true</TaskInheritCategories>
+          <TaskRelatedIds />
+          <ExternalSystem>
+            <HardcodedValue />
+          </ExternalSystem>
+          <ExternalId>
+            <HardcodedValue />
+          </ExternalId>
+          <TaskOwner>
+            <FormattedCode>{0}</FormattedCode>
+            <References>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Process.Target.Owner</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>ResolvedTarget</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Owner</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectType>ProcessInstance</ObjectType>
+              </VariableReference>
+            </References>
+          </TaskOwner>
+          <TaskParameters>
+            <NamedSubstitutableParameter>
+              <DisplayName>Parameter 1:</DisplayName>
+              <Parameter>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Triggers.Windows Event.Category</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Category</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>EventInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </Parameter>
+            </NamedSubstitutableParameter>
+          </TaskParameters>
+          <AffectedServices>
+            <HardcodedValue />
+          </AffectedServices>
+          <AffectedOrganizations>
+            <HardcodedValue />
+          </AffectedOrganizations>
+          <AffectedTargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+          <DiagnosticReportConfiguration>
+            <ReportStylesheet>SituationReport.xsl</ReportStylesheet>
+            <Formats>
+              <DiagnosticReportFormatEntry>
+                <Id>228ce0fb-2798-493e-8d01-5241ac4450d1</Id>
+                <Format xsi:type="SituationReportFormat">
+                  <Section>SituationAnalysis</Section>
+                </Format>
+              </DiagnosticReportFormatEntry>
+              <DiagnosticReportFormatEntry>
+                <Id>7a32e31c-3c41-4a79-b11a-90ccfb974015</Id>
+                <Format xsi:type="SituationReportFormat">
+                  <Problem>true</Problem>
+                  <Section>SituationAnalysis</Section>
+                </Format>
+              </DiagnosticReportFormatEntry>
+            </Formats>
+          </DiagnosticReportConfiguration>
+          <AlertClass>
+            <HardcodedValue>1025</HardcodedValue>
+          </AlertClass>
+          <MatchingCriteria>
+            <GenericCriteria xsi:type="AlertMatchingNumberCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>AlertClass</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingNumber>
+                <HardcodedValue>0</HardcodedValue>
+              </MatchingNumber>
+              <Comparison>Equals</Comparison>
+              <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+            </GenericCriteria>
+            <GenericCriteria xsi:type="AlertMatchingStringCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>Parameter1</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingString>
+                <HardcodedValue>*</HardcodedValue>
+              </MatchingString>
+              <Comparison>Equals</Comparison>
+              <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+            </GenericCriteria>
+            <GenericCriteria xsi:type="AlertMatchingStringCriteria">
+              <LinkChain>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>AffectedTargetConfigurationItem</PropertyName>
+                </Link>
+                <Link xsi:type="PropertyNameLink">
+                  <PropertyName>ObjectName</PropertyName>
+                </Link>
+              </LinkChain>
+              <MatchingString>
+                <HardcodedValue>*</HardcodedValue>
+              </MatchingString>
+              <Comparison>Equals</Comparison>
+              <CriteriaType>ExactlyMatchingMyProperty</CriteriaType>
+            </GenericCriteria>
+          </MatchingCriteria>
+          <MatchingTimePeriod>
+            <DisplayUnits>Minutes</DisplayUnits>
+            <Period>
+              <HardcodedValue>15</HardcodedValue>
+            </Period>
+          </MatchingTimePeriod>
+        </Configuration>
+      </ActivityNode>
+      <ActivityNode xsi:type="ConditionBranchNode">
+        <Id>0bce2157-8aa0-4e9e-82b5-7f663e559995</Id>
+        <DisplayName>If not Duplicate</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="ExecuteActivityNode">
+            <Id>428ac624-bb76-4e50-805f-45348cb0639d</Id>
+            <DisplayName>Reporting Database Connection Error</DisplayName>
+            <Children>
+              <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+                <Id>b2e1a383-0305-44bb-9707-04306221bc76</Id>
+                <ActivityNodeId>5a665a9b-3aa5-47be-8cc3-89ca26a5c7b1</ActivityNodeId>
+                <CompletedId>788fe8d1-13cc-48ed-8c23-354505e827a3</CompletedId>
+              </ActivityNode>
+            </Children>
+            <Configuration xsi:type="IncidentActivityConfiguration" xml:space="preserve">
+              <Id>5a665a9b-3aa5-47be-8cc3-89ca26a5c7b1</Id>
+              <DisplayName>Reporting Database Connection Error</DisplayName>
+              <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+                <FormattedCode />
+                <HardcodedValue>
+                  <Id>00000000-0000-0000-0000-000000000000</Id>
+                  <ObjectType>RuntimeUser</ObjectType>
+                </HardcodedValue>
+              </RuntimeUserObject>
+              <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+                <SingleTargetId>
+                  <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+                </SingleTargetId>
+              </TargetLoadBalancer>
+              <InheritTarget>false</InheritTarget>
+              <ContainingProcessId>dc74209e-908b-4619-ba72-a225a13d2215</ContainingProcessId>
+              <TaskExpiresPeriod>
+                <DisplayUnits>Days</DisplayUnits>
+                <Period>
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <DisplayPath>Adapters.Core Functions Adapter.Default Task Expiration Days</DisplayPath>
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>DefaultTaskExpirationDays</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                      <ObjectType>Adapter</ObjectType>
+                    </VariableReference>
+                  </References>
+                </Period>
+              </TaskExpiresPeriod>
+              <TaskAssignees />
+              <TaskPriority>Medium</TaskPriority>
+              <TaskBlock>false</TaskBlock>
+              <TaskXslFileName>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Adapters.Core Functions Adapter.Default Incident Task Transform</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DefaultIncidentTaskTransform</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                    <ObjectType>Adapter</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskXslFileName>
+              <TaskName>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Reporting Database Connection Error.Name</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DisplayName</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>7a32e31c-3c41-4a79-b11a-90ccfb974015</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskName>
+              <TaskDescription>
+                <FormattedCode>{0}
+
+Validate the connection between the Cisco Process Orchestrator server and its Reporting database is good.</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Reporting Database Connection Error.Task.Description</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Task</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Description</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>7a32e31c-3c41-4a79-b11a-90ccfb974015</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskDescription>
+              <TaskCategoryIds>
+                <SubstitutableGuid>
+                  <HardcodedValue>0aeadc4b-19f3-4d4e-a14b-efd72b3b7892</HardcodedValue>
+                </SubstitutableGuid>
+              </TaskCategoryIds>
+              <TaskInheritCategories>true</TaskInheritCategories>
+              <TaskRelatedIds />
+              <ExternalSystem>
+                <HardcodedValue />
+              </ExternalSystem>
+              <ExternalId>
+                <HardcodedValue />
+              </ExternalId>
+              <TaskOwner>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Process.Target.Owner</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>ResolvedTarget</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Owner</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectType>ProcessInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </TaskOwner>
+              <TaskParameters />
+              <AffectedServices>
+                <HardcodedValue />
+              </AffectedServices>
+              <AffectedOrganizations>
+                <HardcodedValue />
+              </AffectedOrganizations>
+              <AffectedTargetLoadBalancer xsi:type="ProcessTargetLoadBalancer" />
+              <DiagnosticReportConfiguration>
+                <ReportStylesheet>SituationReport.xsl</ReportStylesheet>
+                <Formats>
+                  <DiagnosticReportFormatEntry>
+                    <Id>228ce0fb-2798-493e-8d01-5241ac4450d1</Id>
+                    <Format xsi:type="SituationReportFormat">
+                      <Section>SituationAnalysis</Section>
+                    </Format>
+                  </DiagnosticReportFormatEntry>
+                  <DiagnosticReportFormatEntry>
+                    <Id>5a665a9b-3aa5-47be-8cc3-89ca26a5c7b1</Id>
+                    <Format xsi:type="SituationReportFormat">
+                      <Problem>true</Problem>
+                      <Section>SituationAnalysis</Section>
+                    </Format>
+                  </DiagnosticReportFormatEntry>
+                </Formats>
+              </DiagnosticReportConfiguration>
+              <IncidentClass>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Workflow.Reporting Database Connection Error.Task.Alert Class</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>Task</PropertyName>
+                      </Link>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>AlertClass</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>7a32e31c-3c41-4a79-b11a-90ccfb974015</ObjectId>
+                    <ObjectType>ActivityInstance</ObjectType>
+                  </VariableReference>
+                </References>
+              </IncidentClass>
+              <IncidentIdentifier>
+                <FormattedCode>{0}</FormattedCode>
+                <References>
+                  <VariableReference xsi:type="PropertyReference">
+                    <DisplayPath>Adapters.Core Functions Adapter.Default Generated Incident ID</DisplayPath>
+                    <LinkChain>
+                      <Link xsi:type="PropertyNameLink">
+                        <PropertyName>DefaultGeneratedIncidentID</PropertyName>
+                      </Link>
+                    </LinkChain>
+                    <ObjectId>042b6e8a-90b1-4518-aa3e-398399e1b195</ObjectId>
+                    <ObjectType>Adapter</ObjectType>
+                  </VariableReference>
+                </References>
+              </IncidentIdentifier>
+              <ReportingUser>
+                <HardcodedValue />
+              </ReportingUser>
+              <ReportingUserDetails>
+                <HardcodedValue />
+              </ReportingUserDetails>
+              <CausalAlertIds>
+                <SubstitutableGuid>
+                  <FormattedCode>{0}</FormattedCode>
+                  <References>
+                    <VariableReference xsi:type="PropertyReference">
+                      <DisplayPath>Workflow.Reporting Database Connection Error.Task.Task Id</DisplayPath>
+                      <LinkChain>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Task</PropertyName>
+                        </Link>
+                        <Link xsi:type="PropertyNameLink">
+                          <PropertyName>Id</PropertyName>
+                        </Link>
+                      </LinkChain>
+                      <ObjectId>7a32e31c-3c41-4a79-b11a-90ccfb974015</ObjectId>
+                      <ObjectType>ActivityInstance</ObjectType>
+                    </VariableReference>
+                  </References>
+                </SubstitutableGuid>
+              </CausalAlertIds>
+              <ResolveCausalAlerts>
+                <HardcodedValue>true</HardcodedValue>
+              </ResolveCausalAlerts>
+            </Configuration>
+          </ActivityNode>
+        </Children>
+        <Condition>
+          <Id>bfb96c6f-95c9-42f9-8810-7d0f79e0599a</Id>
+          <Conditions>
+            <ConditionDefinition xsi:type="VariableConditionDefinition">
+              <Id>8fda81b6-472c-4129-82a2-d313cc61197c</Id>
+              <Expression xsi:type="SubstitutableBoolean">
+                <HardcodedValue>false</HardcodedValue>
+              </Expression>
+              <Comparison>Equals</Comparison>
+              <VariableReference xsi:type="PropertyReference">
+                <DisplayPath>Workflow.Reporting Database Connection Error.Task.Is Duplicate</DisplayPath>
+                <LinkChain>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>Task</PropertyName>
+                  </Link>
+                  <Link xsi:type="PropertyNameLink">
+                    <PropertyName>IsDuplicate</PropertyName>
+                  </Link>
+                </LinkChain>
+                <ObjectId>7a32e31c-3c41-4a79-b11a-90ccfb974015</ObjectId>
+                <ObjectType>ActivityInstance</ObjectType>
+              </VariableReference>
+            </ConditionDefinition>
+          </Conditions>
+        </Condition>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>dc74209e-908b-4619-ba72-a225a13d2215</ProcessId>
+</WorkflowConfiguration>
