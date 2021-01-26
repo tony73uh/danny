@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>aea5a54f-5393-4f0b-b8be-0ca5451ddd84</Id>
+  <DisplayName>Tony Lab</DisplayName>
+  <CreatedTime>2021-01-26T17:27:15.912715Z</CreatedTime>
+  <ModifiedTime>2021-01-26T17:27:15.912715Z</ModifiedTime>
+  <RuntimeUserObject xsi:type="SubstitutableObjectReference">
+    <FormattedCode />
+    <HardcodedValue>
+      <Id>00000000-0000-0000-0000-000000000000</Id>
+      <ObjectType>RuntimeUser</ObjectType>
+    </HardcodedValue>
+  </RuntimeUserObject>
+  <TargetLoadBalancer xsi:type="SingleTargetReferenceLoadBalancer">
+    <SingleTargetReference>
+      <FormattedCode />
+      <HardcodedValue>
+        <Id>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</Id>
+        <ObjectType>Target</ObjectType>
+      </HardcodedValue>
+    </SingleTargetReference>
+  </TargetLoadBalancer>
+  <AuditStarts>true</AuditStarts>
+  <AuditSuccesses>true</AuditSuccesses>
+  <WorkflowId>aa888600-3e7c-46cb-afa1-f22e34276c1c</WorkflowId>
+  <CategoryIds />
+  <TriggerOwner>36ec6d73-d2fb-4c3b-913e-9adae567d051</TriggerOwner>
+  <Triggers>
+    <TriggerDefinition>
+      <Event xsi:type="AdHocEventDefinition">
+        <Id>d4f7c08d-e6d4-4714-9f62-8f9c5e0bdfde</Id>
+        <DisplayName>Started by User</DisplayName>
+        <Identities />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>cae3f7a5-f22a-45b0-a39b-6234484c0194</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>902f14c0-f0a8-48a8-bbd4-2469aed42899</TriggerId>
+    </TriggerDefinition>
+    <TriggerDefinition>
+      <Event xsi:type="StartProcessEventDefinition">
+        <Id>d414314b-77c8-4ea5-9adc-9f47f52db5ed</Id>
+        <DisplayName>Started by Parent Process</DisplayName>
+        <ProcessIds />
+      </Event>
+      <Condition xsi:type="RootConditionDefinition">
+        <Id>ebb011b8-f085-4080-8399-9de4b1fe13a3</Id>
+        <Conditions />
+      </Condition>
+      <TriggerId>cfea6573-61e5-4474-acaf-8c5dba4afabc</TriggerId>
+    </TriggerDefinition>
+  </Triggers>
+  <VariableDefinitions />
+  <Notes />
+  <ValidTargetTypeNames>
+    <string>Tidal.Automation.BuiltinAdapter.Common.MasterTargetConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+  </ValidTargetTypeNames>
+  <ValidTargetTypeExtensionIds>
+    <guid>af449107-3bd4-c9a3-e2ab-5f4acf12ac03</guid>
+  </ValidTargetTypeExtensionIds>
+  <ValidRuntimeUserTypeNames>
+    <string>Tidal.Automation.CloudPortal.Common.User.CloudPortalUserConfiguration, Tidal.Automation.CloudPortal.Common</string>
+    <string>Tidal.Automation.WebService.Common.ClientCertificateUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.CloudCenter.Users.CloudCenterApiAccessCredentialsConfiguration, Tidal.Automation.CloudCenter.Common</string>
+    <string>Tidal.Automation.WebService.Common.OAuthUserConfiguration, Tidal.Automation.WebService.Common</string>
+    <string>Tidal.Automation.OpenStack.Common.User.OpenStackUserConfiguration, Tidal.Automation.OpenStack.Common</string>
+    <string>Tidal.Automation.Ssh.Common.PublicKeyAdminUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.GitAdapter.Common.GitRepositoryRuntimeUserConfiguration, Tidal.Automation.GitAdapter.Common</string>
+    <string>Tidal.Automation.Ssh.Common.IOSUserConfiguration, Tidal.Automation.Ssh.Common</string>
+    <string>Tidal.Automation.BuiltinAdapter.Common.GenericRuntimeUserConfiguration, Tidal.Automation.BuiltinAdapter.Common</string>
+    <string>Tidal.Automation.Azure.Common.AzureAccessKeyConfiguration, Tidal.Automation.Azure.Common</string>
+    <string>Tidal.Automation.Snmp.Common.SnmpUserConfiguration, Tidal.Automation.Snmp.Common</string>
+    <string>Tidal.Automation.vCloud.Common.Users.vCloudUserConfiguration, Tidal.Automation.vCloud.Common</string>
+    <string>Tidal.Automation.Windows.Common.WindowsUserConfiguration, Tidal.Automation.Windows.Common</string>
+  </ValidRuntimeUserTypeNames>
+</ProcessConfiguration>
