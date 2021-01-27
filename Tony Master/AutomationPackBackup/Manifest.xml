@@ -4,12 +4,21 @@
   <DisplayName>Tony Master</DisplayName>
   <VersionNumber>-1</VersionNumber>
   <CreatedTime>2021-01-26T17:27:33.5377467Z</CreatedTime>
-  <ModifiedTime>2021-01-27T16:12:26.2875036Z</ModifiedTime>
+  <CreatedBy xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-209125451-689648040-410060929-16762</SecurityIdentifier>
+  </CreatedBy>
+  <ModifiedTime>2021-01-27T16:19:34.8664891Z</ModifiedTime>
+  <ModifiedBy xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-209125451-689648040-410060929-16762</SecurityIdentifier>
+  </ModifiedBy>
+  <Owner xsi:type="SidIdentity">
+    <SecurityIdentifier>S-1-5-21-209125451-689648040-410060929-16762</SecurityIdentifier>
+  </Owner>
   <CompanyName>Trial</CompanyName>
-  <Version>1.0.0.99</Version>
+  <Version>1.0.0.2</Version>
   <ExportProductVersion>3.5.13.28</ExportProductVersion>
-  <PublishDate>2021-01-27T16:12:26.2718779Z</PublishDate>
-  <ImportDate>2021-01-27T15:52:41.367394Z</ImportDate>
+  <PublishDate>2021-01-27T15:53:02.6643243Z</PublishDate>
+  <ImportDate>2021-01-27T16:19:34.6165107Z</ImportDate>
   <DescriptionUrl />
   <Copyright>Trial 2021</Copyright>
   <ObjectEntries />
@@ -56,4 +65,5 @@
   </StyleCheckerIds>
   <AlwaysArchive>false</AlwaysArchive>
   <Patches />
+  <EncodedMessage>y2vlXt1BSZcjZGxkCFnFkA==</EncodedMessage>
 </AutomationPackConfiguration>
