@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<RuntimeUserConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GitRepositoryRuntimeUserConfiguration" xml:space="preserve">
+  <Id>f183536f-6136-4d3e-96c8-b1d691ba1cf5</Id>
+  <DisplayName>tony73uh</DisplayName>
+  <CreatedTime>2021-01-12T16:36:23.847129Z</CreatedTime>
+  <ModifiedTime>2021-01-12T16:36:23.847129Z</ModifiedTime>
+  <EncryptedPassword>
+    <EncryptedForm />
+  </EncryptedPassword>
+</RuntimeUserConfiguration>
