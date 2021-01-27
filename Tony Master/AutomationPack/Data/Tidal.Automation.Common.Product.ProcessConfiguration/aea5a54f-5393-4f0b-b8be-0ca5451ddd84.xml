@@ -2,8 +2,8 @@
 <ProcessConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
   <Id>aea5a54f-5393-4f0b-b8be-0ca5451ddd84</Id>
   <DisplayName>Tony Lab</DisplayName>
-  <CreatedTime>2021-01-26T17:27:15.912715Z</CreatedTime>
-  <ModifiedTime>2021-01-26T17:27:15.912715Z</ModifiedTime>
+  <CreatedTime>2021-01-27T15:52:41.1017684Z</CreatedTime>
+  <ModifiedTime>2021-01-27T15:52:41.1017684Z</ModifiedTime>
   <RuntimeUserObject xsi:type="SubstitutableObjectReference">
     <FormattedCode />
     <HardcodedValue>
@@ -30,6 +30,7 @@
       <Event xsi:type="AdHocEventDefinition">
         <Id>d4f7c08d-e6d4-4714-9f62-8f9c5e0bdfde</Id>
         <DisplayName>Started by User</DisplayName>
+        <Imported>true</Imported>
         <Identities />
       </Event>
       <Condition xsi:type="RootConditionDefinition">
@@ -42,6 +43,7 @@
       <Event xsi:type="StartProcessEventDefinition">
         <Id>d414314b-77c8-4ea5-9adc-9f47f52db5ed</Id>
         <DisplayName>Started by Parent Process</DisplayName>
+        <Imported>true</Imported>
         <ProcessIds />
       </Event>
       <Condition xsi:type="RootConditionDefinition">
