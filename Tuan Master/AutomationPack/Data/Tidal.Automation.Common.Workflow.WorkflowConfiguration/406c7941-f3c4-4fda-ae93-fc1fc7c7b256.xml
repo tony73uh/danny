@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<WorkflowConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:space="preserve">
+  <Id>406c7941-f3c4-4fda-ae93-fc1fc7c7b256</Id>
+  <DisplayName>Tuan Master Process</DisplayName>
+  <CreatedTime>2021-01-27T19:45:46.2187778Z</CreatedTime>
+  <ModifiedTime>2021-01-27T19:45:46.2187778Z</ModifiedTime>
+  <FirstActivity xsi:type="RootNode">
+    <Id>9758ac8a-9a28-4fd8-ae8e-d8c2f8744e8e</Id>
+    <DisplayName />
+    <Children>
+      <ActivityNode xsi:type="ExecuteActivityNode">
+        <Id>b6ac1a04-81b4-4fb8-98f7-22db6c00b3d6</Id>
+        <DisplayName>Sleep</DisplayName>
+        <Children>
+          <ActivityNode xsi:type="FailedBranchPlaceholderNode">
+            <Id>49759022-5c1f-4157-bd27-9ed6867e3c5e</Id>
+            <ActivityNodeId>b6ac1a04-81b4-4fb8-98f7-22db6c00b3d6</ActivityNodeId>
+            <CompletedId>7c0d45c6-8c29-4984-a471-d8986557ca96</CompletedId>
+          </ActivityNode>
+        </Children>
+        <Configuration xsi:type="SleepActivityConfiguration" xml:space="preserve">
+          <Id>b6ac1a04-81b4-4fb8-98f7-22db6c00b3d6</Id>
+          <DisplayName>Sleep</DisplayName>
+          <TargetLoadBalancer xsi:type="SingleTargetLoadBalancer">
+            <SingleTargetId>
+              <HardcodedValue>bd4b3145-4e20-42bb-ba8f-34c013ca86cc</HardcodedValue>
+            </SingleTargetId>
+          </TargetLoadBalancer>
+          <InheritTarget>false</InheritTarget>
+          <ContainingProcessId>0166bc79-2b66-408a-8d7a-11bc9c265ed3</ContainingProcessId>
+          <Seconds>
+            <HardcodedValue>60</HardcodedValue>
+          </Seconds>
+        </Configuration>
+      </ActivityNode>
+    </Children>
+  </FirstActivity>
+  <ProcessId>0166bc79-2b66-408a-8d7a-11bc9c265ed3</ProcessId>
+</WorkflowConfiguration>
